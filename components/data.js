@@ -1,4 +1,4 @@
-export const baseUrl = "https://harriet-beryl.vercel.app/";
+export const baseUrl = "https://harriet-beryl.vercel.app/api";
 // export const baseUrl = "http://localhost:3000/api/";
 
 export const toastOptions = {
