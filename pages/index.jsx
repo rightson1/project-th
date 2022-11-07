@@ -51,6 +51,7 @@ const Us = () => {
         setLoading(false)
       }).catch((err) => {
         setLoading(false)
+        toast.error("There was an error", toastOptions)
         console.log(err)
       })
 
@@ -59,7 +60,7 @@ const Us = () => {
 
     } catch (err) {
 
-      toast.error("There was an error", toastOptions)
+      toast.error(err.message, toastOptions)
       setLoading(false)
     }
 
@@ -79,12 +80,15 @@ const Us = () => {
           const userCredential = await signInWithEmailAndPassword(auth, email, password);
           router.push("/worker")
 
+
         } else {
           toast.error("You are Not a worker dummmy", toastOptions)
         }
         setLoading(false)
       }).catch((err) => {
         setLoading(false)
+
+        toast.error("There was an error", toastOptions)
         console.log(err)
       })
 
@@ -93,7 +97,7 @@ const Us = () => {
 
     } catch (err) {
 
-      toast.error("There was an error", toastOptions)
+      toast.error(err.message, toastOptions)
       setLoading(false)
     }
 
