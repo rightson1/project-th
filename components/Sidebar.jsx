@@ -15,7 +15,7 @@ const Sidebar = ({ desk }) => {
 
 
     const Side = () => (
-        <ul className="flex flex-col w-full  py-4">
+        <ul className="flex flex-col w-full  py-4 ">
 
 
 
@@ -100,7 +100,7 @@ const Sidebar = ({ desk }) => {
     )
     if (desk) {
 
-        return <div className="hidden ty:flex ty:fixed pt-[40px] left-0 w-[300px] max-w-xs p-4 bg-white  flex-col overflow-y-auto shadow-lg overflow-x-hidden borider-r-[4px] bord0er-[rgba(0,0,0,.1)] h-auto">
+        return <div className="hidden ty:flex ty:fixed pt-[40px] left-0 w-[300px] max-w-xs p-4 bg-white  flex-col overflow-y-auto shadow-lg overflow-x-hidden borider-r-[4px] bord0er-[rgba(0,0,0,.1)] min-h-screen">
             <div className="flex gap-4">
                 <div className=" min-w-[50px] w-[50px] h-[50px] rounded-[50%] overflow-hidden">
                     <Image src="/avatar.png" alt="" width="100%" objectFit="cover" height="100%" />
@@ -117,7 +117,7 @@ const Sidebar = ({ desk }) => {
         </div>
     }
     else {
-        return <div className="flex flex-col w-full max-w-xs p-4 bg-white h-full">
+        return <div className="flex flex-col w-full max-w-xs p-4 bg-white h-full ">
             <div className="flex gap-4">
                 <div className=" min-w-[50px] w-[50px] h-[50px] rounded-[50%] overflow-hidden">
                     <Image src="/avatar.png" alt="" width="100%" objectFit="cover" height="100%" />

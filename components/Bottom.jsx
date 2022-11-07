@@ -45,7 +45,7 @@ const Bottom = ({ admin }) => {
 
 
     return (
-        <div className="w-full h-screen">
+        <div className="w-full h-screen ty:hidden">
             {/* <section id="bottom-navigation" className="md:hidden block fixed inset-x-0 bottom-0 z-10 bg-white shadow"> // if shown only tablet/mobile--> */}
 
 
