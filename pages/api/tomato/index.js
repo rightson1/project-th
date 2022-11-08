@@ -7,6 +7,7 @@ export default async function handler(req, res) {
     const { method } = req;
     if (method === "GET") {
         const { search } = req.query;
+        const { id } = req.query;
         try {
             if (search) {
                 const tomatoes = await Tomato.find({
@@ -22,6 +23,9 @@ export default async function handler(req, res) {
                         { diseases: search.toUpperCase() },
                     ],
                 });
+                res.status(200).json(tomatoes);
+            } else if (id) {
+                const tomatoes = await Tomato.findOne({ _id: id });
                 res.status(200).json(tomatoes);
             } else {
                 const tomatoes = await Tomato.find({});

@@ -20,56 +20,56 @@ const Sidebar = ({ desk }) => {
 
 
             <li className="my-px cursor-pointer border-b border-black-[2px]">
-                <span onClick={() => router.push('/pedi')}
+                <button onClick={() => router.push('/pedi')}
                     className="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100">
                     <AiOutlineHome className="text-xl cursor-pointer" />
-                    <span className="ml-3">Home</span>
+                    <button className="ml-3">Home</button>
 
-                </span>
+                </button>
             </li>
 
             <li className="my-px cursor-pointer border-b border-black-[2px]">
-                <span onClick={() => router.push('/pedi/farms')}
+                <button onClick={() => router.push('/pedi/farms')}
                     className="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100">
                     <GiFarmTractor className="text-xl" />
-                    <span className="ml-3">Farms</span>
+                    <button className="ml-3">Farms</button>
 
-                </span>
+                </button>
             </li>
             <li className="my-px cursor-pointer border-b border-black-[2px]">
-                <span onClick={() => router.push('/pedi/addFarm')}
+                <button onClick={() => router.push('/pedi/addFarm')}
                     className="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100">
                     <AiOutlineAppstoreAdd className="text-xl" />
-                    <span className="ml-3">Add Farm</span>
+                    <button className="ml-3">Add Farm</button>
 
-                </span>
+                </button>
             </li>
 
             <li className="my-px cursor-pointer border-b border-black-[2px]">
-                <span onClick={() => router.push('/pedi/')}
+                <button onClick={() => router.push('/pedi/')}
                     className="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100">
                     <IoMdNotificationsOutline className="text-xl" />
-                    <span className="ml-3">Notifications</span>
-                    <span className="flex items-center justify-center text-sm text-gray-500 font-semibold bg-gray-200 h-6 px-2 rounded-full ml-auto">10</span>
-                </span>
+                    <button className="ml-3">Notifications</button>
+                    <button className="flex items-center justify-center text-sm text-gray-500 font-semibold bg-gray-200 h-6 px-2 rounded-full ml-auto">10</button>
+                </button>
             </li>
 
             <li className="my-px cursor-pointer border-b border-black-[2px]">
-                <span onClick={() => router.push('/pedi/workers')}
+                <button onClick={() => router.push('/pedi/workers')}
                     className="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100">
                     <GrUserWorker className="text-xl" />
-                    <span className="ml-3">Workers</span>
+                    <button className="ml-3">Workers</button>
 
-                </span>
+                </button>
             </li>
 
             <li className="my-px cursor-pointer border-b border-black-[2px]">
-                <span onClick={() => router.push('/pedi')}
+                <button onClick={() => router.push('/pedi')}
                     className="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100">
                     <BsFillEnvelopeFill className="text-xl" />
-                    <span className="ml-3">Applications</span>
+                    <button className="ml-3">Applications</button>
 
-                </span>
+                </button>
             </li>
 
 
@@ -80,9 +80,9 @@ const Sidebar = ({ desk }) => {
                 router.push('/')
 
             }}>
-                <span
+                <button
                     className="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100">
-                    <span className="flex items-center justify-center text-lg text-red-400">
+                    <button className="flex items-center justify-center text-lg text-red-400">
                         <svg fill="none"
                             stroke-linecap="round"
                             stroke-linejoin="round"
@@ -92,9 +92,9 @@ const Sidebar = ({ desk }) => {
                             className="h-6 w-6">
                             <path d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"></path>
                         </svg>
-                    </span>
-                    <span className="ml-3">Logout</span>
-                </span>
+                    </button>
+                    <button className="ml-3">Logout</button>
+                </button>
             </li>
         </ul>
     )

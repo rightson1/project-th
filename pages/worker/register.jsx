@@ -63,7 +63,7 @@ const Register = () => {
                 </div>
 
                 <button className="bg-green py-3 px-4 text-white rounded-md w-[180px] flex justify-center items-center gap-2" type="submit">{loading ? 'Please Wait....' : "Register"}</button>
-                <p>Already have an account? <span className="text-green cursor-pointer" onClick={() => router.push("login")}>Login</span></p>
+                <p>Already have an account? <button className="text-green cursor-pointer" onClick={() => router.push("login")}>Login</button></p>
 
             </div>
 

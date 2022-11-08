@@ -85,7 +85,7 @@ const Index = () => {
                     <span className="">{product.causes}</span>
                 </div>
 
-                <button className="p-2 bg-green text-white rounded-md" onClick={() => router.push(`/shop/item/${product._id}`)}> View More</button>
+                <button className="p-2 bg-green text-white rounded-md" onClick={() => router.push(`/pedi/item/${product._id}`)}> View More</button>
             </div>
 
 

@@ -95,16 +95,16 @@ const Index = () => {
 
                                         </div>
 
-                                        <div className="flex gap-1 ">
+                                        <button className="flex gap-1 ">
                                             <div className="w-full  gap-4 items-center bg-green p-2 rounded-md text-white text-center cursor-pointer"
 
                                             >Order</div>
-                                            <div className="w-full  gap-4 items-center bg-green p-2 rounded-md text-white text-center cursor-pointer" onClick={() => {
+                                            <button className="w-full  gap-4 items-center bg-green p-2 rounded-md text-white text-center cursor-pointer" onClick={() => {
                                                 handleDelete()
-                                            }}>Delete Farm</div>
+                                            }}>Delete Farm</button>
 
 
-                                        </div>
+                                        </button>
 
                                     </div>
 

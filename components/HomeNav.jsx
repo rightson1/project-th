@@ -11,9 +11,9 @@ const HomeNav = () => {
         <div className="flex justify-between px-0 md:px-4 items-center text-black opacity-90 h-[80px]">
             <h1 className="text-2xl font-bold xm:cursor-pointer" onClick={() => router.push('/')}>Home.</h1>
             <div className="hidden md:flex gap-4 text-[16px] opacity-75  ">
-                <motion.div whileTap={{ background: 'black', color: 'black' }} className="cursor-pointer px-3 py-2 hover:border-b-[2px]" onClick={() => router.push('/')}>Home</motion.div>
-                <motion.div whileTap={{ background: 'black', color: 'black' }} className="cursor-pointer px-3 py-2 hover:border-b-[2px]" onClick={() => router.push('/help')}>How To Use</motion.div>
-                <motion.div whileTap={{ background: 'black', color: 'black' }} className="cursor-pointer px-3 py-2 hover:border-b-[2px]" onClick={() => router.push('/dev')}>About Dev</motion.div>
+                <motion.button whileTap={{ background: 'black', color: 'black' }} className="cursor-pointer px-3 py-2 hover:border-b-[2px]" onClick={() => router.push('/')}>Home</motion.button>
+                <motion.button whileTap={{ background: 'black', color: 'black' }} className="cursor-pointer px-3 py-2 hover:border-b-[2px]" onClick={() => router.push('/help')}>How To Use</motion.button>
+                <motion.button whileTap={{ background: 'black', color: 'black' }} className="cursor-pointer px-3 py-2 hover:border-b-[2px]" onClick={() => router.push('/dev')}>About Dev</motion.button>
             </div>
             <button onClick={() => router.push('/')} className="hidden md:flex">Get Started</button>
             <motion.div className="close xm:cursor-pointer md:hidden mr-5 text-2xl cursor-pointer" onClick={() => setOpen(!open)} layout>
@@ -69,20 +69,20 @@ const HomeNav = () => {
         } onClick={() => setOpen(false)}>
             <div className="w-[250px]  h-[290px] bg-[fuchsia] opacity-90  flex flex-col  justify-center  gap-4 mt-[100px] px-4" onClick={(e) => e.stopPropagation()}>
 
-                <h1 className="cursor-pointer px-4 py-6 text-black text-[16px]  shadow-lg bg-[rgba(255,255,255,.1)] hover:bg-black hover:text-black" onClick={() => {
+                <a className="cursor-pointer px-4 py-6 text-black text-[16px]  shadow-lg bg-[rgba(255,255,255,.1)] hover:bg-black hover:text-black" onClick={() => {
                     router.push('/')
                     return setOpen(false)
-                }}>Home</h1>
-                <h1 className="cursor-pointer px-4 py-6 text-black text-[16px]  shadow-lg
+                }}>Home</a>
+                <a className="cursor-pointer px-4 py-6 text-black text-[16px]  shadow-lg
                  bg-[rgba(255,255,255,.1)] hover:bg-black hover:text-black" onClick={() => {
                         router.push('/help')
                         return setOpen(false)
-                    }}>How To Use</h1>
-                <h1 className="cursor-pointer px-4 py-6 text-black text-[16px] 
+                    }}>How To Use</a>
+                <a className="cursor-pointer px-4 py-6 text-black text-[16px] 
                  shadow-lg bg-[rgba(255,255,255,.1)] hover:bg-black hover:text-black" onClick={() => {
                         router.push('/dev')
                         return setOpen(false)
-                    }}>About Dev</h1>
+                    }}>About Dev</a>
 
 
 

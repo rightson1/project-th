@@ -21,20 +21,20 @@ const Bottom = ({ admin }) => {
 
                 <section id="bottom-navigation" className="block fixed inset-x-0 bottom-0 z-10 bg-white shadow">
                     <div id="tabs" className="flex justify-between">
-                        <div href="#" className="w-full text-green focus:text-black hover:text-black justify-center inline-block text-center pt-2 pb-1 cursor-pointer" onClick={() => router.push('/pedi')}>
+                        <button className="w-full text-green focus:text-black hover:text-black justify-center inline-block text-center pt-2 pb-1 cursor-pointer" onClick={() => router.push('/pedi')}>
                             <AiOutlineHome className="mx-auto text-2xl" />
                             <span className="tab tab-home block text-xs">Home</span>
-                        </div>
-                        <div href="#" className="w-full text-green focus:text-black hover:text-black justify-center inline-block text-center pt-2 pb-1 cursor-pointer" onClick={() => router.push('/pedi/addFarm')}>
+                        </button>
+                        <button className="w-full text-green focus:text-black hover:text-black justify-center inline-block text-center pt-2 pb-1 cursor-pointer" onClick={() => router.push('/pedi/addFarm')}>
 
                             <AiOutlineAppstoreAdd className="mx-auto text-2xl " />
                             <span className="tab tab-kategori block text-xs">Add Farm</span>
-                        </div>
-                        <div href="#" className="w-full text-green focus:text-black hover:text-black justify-center inline-block text-center pt-2 pb-1 cursor-pointer" onClick={() => router.push('/pedi/workers')}>
+                        </button>
+                        <button className="w-full text-green focus:text-black hover:text-black justify-center inline-block text-center pt-2 pb-1 cursor-pointer" onClick={() => router.push('/pedi/workers')}>
 
                             <AiOutlineShoppingCart className="mx-auto text-2xl " />
                             <span className="tab tab-explore block text-xs">Workers</span>
-                        </div>
+                        </button>
 
                     </div>
                 </section>
@@ -52,25 +52,25 @@ const Bottom = ({ admin }) => {
 
             <section id="bottom-navigation" className="block fixed inset-x-0 bottom-0 z-10 bg-white shadow">
                 <div id="tabs" className="flex justify-between">
-                    <div href="#" className="w-full text-green focus:text-black hover:text-black justify-center inline-block text-center pt-2 pb-1 cursor-pointer" onClick={() => router.push('/worker')}>
+                    <button className="w-full text-green focus:text-black hover:text-black justify-center inline-block text-center pt-2 pb-1 cursor-pointer" onClick={() => router.push('/worker')}>
                         <AiOutlineHome className="mx-auto text-2xl" />
                         <span className="tab tab-home block text-xs">Home</span>
-                    </div>
-                    <div href="" className="w-full text-green focus:text-black hover:text-black justify-center inline-block text-center pt-2 pb-1 cursor-pointer" onClick={() => {
+                    </button>
+                    <button className="w-full text-green focus:text-black hover:text-black justify-center inline-block text-center pt-2 pb-1 cursor-pointer" onClick={() => {
                         router.push("/worker/form")
 
                     }}>
 
                         <AiOutlineAppstoreAdd className="mx-auto text-2xl " />
                         <span className="tab tab-kategori block text-xs">Upload</span>
-                    </div>
-                    <div className="w-full text-green focus:text-black hover:text-black justify-center inline-block text-center pt-2 pb-1 cursor-pointer" onClick={() => {
+                    </button>
+                    <button className="w-full text-green focus:text-black hover:text-black justify-center inline-block text-center pt-2 pb-1 cursor-pointer" onClick={() => {
                         router.push("/worker/profile")
                     }}>
 
                         <BiUserCircle className="mx-auto text-2xl " />
                         <span className="tab tab-explore block text-xs">Profile</span>
-                    </div>
+                    </button>
 
 
                 </div>

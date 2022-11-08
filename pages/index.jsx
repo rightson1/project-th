@@ -15,12 +15,15 @@ const Us = () => {
   const [loading, setLoading] = React.useState(false)
   const [admin, setAdmin] = React.useState(true)
   const [visible, setVisible] = React.useState(false)
+  const [email, setEmail] = React.useState();
+  const [password, setPassword] = React.useState();
+
   const variants = {
     animate: {
       opacity: 1,
       transition: {
         staggerChildren: .2,
-        delayChildren: .2,
+        delayChildren: .2
       },
 
     },
@@ -31,13 +34,26 @@ const Us = () => {
     }
 
   }
+
+
+  const submit = (e) => {
+    if (!email || !password) {
+      toast.error("Please fill all fields", toastOptions)
+      return;
+    }
+    if (admin) {
+      handleSubmit(e)
+    } else {
+      handleSubmit1(e)
+    }
+
+  }
   const handleSubmit = async (e) => {
 
     setLoading(true)
     e.preventDefault()
 
-    const email = e.target.email.value
-    const password = e.target.password.value
+
     try {
       axios.get(`${baseUrl}/pedi?email=${email}`).then(async (res) => {
 
@@ -71,8 +87,7 @@ const Us = () => {
     setLoading(true)
     e.preventDefault()
 
-    const email = e.target.email.value
-    const password = e.target.password.value
+
     try {
       axios.get(`${baseUrl}/worker?email=${email}`).then(async (res) => {
 
@@ -125,15 +140,15 @@ const Us = () => {
 
             </div>
             <div className="w-[50px] h-[10px] bg-black"></div>
-            <form className="flex flex-col  w-full mt-7  gap-4  z-[5]" onSubmit={admin ? handleSubmit : handleSubmit1}>
+            <div className="flex flex-col  w-full mt-7  gap-4  z-[5]" >
 
               <div className="flex flex-col text-black items-start w-3/4 tl:w-full">
                 <label htmlFor="">Email</label>
-                <input type="email" placeholder="Enter email" className="py-4 placeholder:text-[10px] border-b border-black w-full  px-2   outline-none" required name="email" />
+                <input type="email" placeholder="Enter email" className="py-4 placeholder:text-[10px] border-b border-black w-full  px-2   outline-none" required name="email" onChange={(e) => setEmail(e.target.value)} />
               </div>
               <div className="flex flex-col text-black items-start w-3/4 tl:w-full ">
                 <label htmlFor="">Enter Password</label>
-                <input type={visible ? 'text' : "Password"} placeholder="Enter Password" className="py-4 placeholder:text-[10px] border-b border-black w-full   px-2  outline-none" required name="password" />
+                <input type={visible ? 'text' : "Password"} onChange={(e) => setPassword(e.target.value)} placeholder="Enter Password" className="py-4 placeholder:text-[10px] border-b border-black w-full   px-2  outline-none" required name="password" />
               </div>
               <div className="flex   text-black items-center gap-4 w-3/4 tl:w-full ">
                 <input type="checkbox" className="p-3 cursor-pointer" onChange={() => setVisible(!visible)} />
@@ -166,10 +181,10 @@ const Us = () => {
                   className="p-4 text-white  flex justify-center items-center  bg-black flex-1  border-b-[1px] cursor-pointer"> Worker </motion.div>
               </div>
 
-              <button type="submit" className="bg-black py-3 px-4 text-white rounded-md w-full flex justify-center items-center gap-2 w-3/4">{loading ? "Please Wait..." : "Login"} </button>
-              <p>Dont have an account?<span className="text-green cursor-pointer" onClick={() => router.push("/register")}>Register As Admin</span> or <span className="text-green cursor-pointer" onClick={() => router.push("/worker/register")}>Register As Worker</span></p>
+              <button className="bg-black py-3 px-4 text-white rounded-md w-full flex justify-center items-center gap-2 w-3/4" onClick={submit}>{loading ? "Please Wait..." : "Login"} </button>
+              <p>Dont have an account?<button className="text-green cursor-pointer" onClick={() => router.push("/register")}>Register As Admin</button> or <button className="text-green cursor-pointer" onClick={() => router.push("/worker/register")}>Register As Worker</button></p>
 
-            </form>
+            </div>
 
           </div>
           <div className=" justify-center items-start flex-1 hidden md:flex">

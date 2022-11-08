@@ -15,51 +15,34 @@ const Index = () => {
     const { user, admin } = useAuth();
     const [farm, setFarm] = useState()
     const [open, setOpen] = useState(false);
-    const [worker, setWorker] = React.useState();
+    const [disease, setDisease] = React.useState();
     const [loading, setLoading] = useState(true)
     const [loading1, setLoading1] = useState(false)
     const [change, setChange] = useState(false)
     const [farms, setFarms] = useState([]);
     const { id } = router.query
 
-    useEffect(() => {
-
-        axios.get(`${baseUrl}/farm`).then((res) => {
-
-            setLoading(false)
-            setFarms(res.data)
-        }).catch((err) => {
-
-            setLoading(false)
-
-        })
-
-
-    }, [change])
 
 
 
+    // const handleEdit = () => {
 
-    const handleEdit = (e) => {
-        e.preventDefault()
-        const farm = e.target.farm.value;
-
-        if (!farm) return;
-        setLoading1(true)
-        axios.put(`${baseUrl}/worker?id=${worker._id}`, { farm }).then((res) => {
-            setLoading1(false)
-            setOpen(false)
-            setChange(!change)
-            toast.success("Profile Updated Sucessfully", toastOptions);
+    //     if (!farm) return;
+    //     setLoading1(true)
+    //     axios.put(`${baseUrl}/disease?id=${disease._id}`, { farm }).then((res) => {
+    //         setLoading1(false)
+    //         setOpen(false)
+    //         setChange(!change)
+    //         toast.success("Profile Updated Sucessfully", toastOptions);
 
 
 
-        }).catch((err) => {
-            setLoading1(false)
-            toast.error("There was an error", toastOptions);
-            console.log(err)
-        })
-    }
+    //     }).catch((err) => {
+    //         setLoading1(false)
+    //         toast.error("There was an error", toastOptions);
+    //         console.log(err)
+    //     })
+    // }
 
     useEffect(() => {
         if (!admin) {
@@ -70,10 +53,10 @@ const Index = () => {
 
     useEffect(() => {
 
-        axios.get(`${baseUrl}/worker?id=${id}`).then((res) => {
+        axios.get(`${baseUrl}/tomato?id=${id}`).then((res) => {
 
             setLoading(false)
-            setWorker(res.data)
+            setDisease(res.data)
         }).catch((err) => {
 
             setLoading(false)
@@ -83,11 +66,11 @@ const Index = () => {
 
     }, [id, change])
     const handleDelete = () => {
-        const corfirm = window.confirm("Are you sure you want to delete this worker?")
+        const corfirm = window.confirm("Are you sure you want to delete this disease?")
         if (corfirm) {
             setLoading1(true)
-            axios.delete(`${baseUrl}/worker?id=${id}`).then((res) => {
-                toast.success("worker Deleted Sucessfull", toastOptions)
+            axios.delete(`${baseUrl}/disease?id=${id}`).then((res) => {
+                toast.success("disease Deleted Sucessfull", toastOptions)
                 setLoading1(false)
 
                 setChange(!change)
@@ -111,26 +94,22 @@ const Index = () => {
             <div className="flex flex-col px-8 tl:p-4 ">
 
                 <div className="flex flex-col px-8 tl:p-4 w-full items-center ">
-                    <h1 className="text-3xl font-bold  text-green" >workers</h1>
-                    <div className="overflow-x-auto w-full md:px-8">
+                    <h1 className="text-3xl font-bold  text-green" >diseases</h1>
+                    <div className="overflow-x-auto w-full md:px-8 shadow-lg p-2">
                         {
-                            worker ? <div className="my-8 justify-center w-full overflow-auto h-auto pb-8">
+                            disease ? <div className="my-8 justify-center w-full overflow-auto h-auto pb-8">
 
 
-                                <div className=" flex  gap-2 w-full   h-auto flex-col py-4  shadow-lg    rounded-lg   ">
-                                    <div className="  w-full h-[220px]" >
-                                        <img src={worker?.avatar ? worker.avatar : "/worker.jpg"} alt="" className=" h-[90%]  w-full object-cover" />
+                                <div className=" flex  gap-2 w-full   h-auto flex-col py-4      rounded-lg   ">
+                                    <div className="  w-full h-[300px]" >
+                                        <img src={disease.url} alt="" className=" h-[90%]  w-full object-cover" />
                                     </div>
                                     <div cl
                                         assName="flex flex-col  px-4 flex-2  gap-2">
                                         <div className="grid grid-cols-2">
-                                            <div className="flex w-full  p items-center gap-2"><span className="font-bold text-[18px]">Name:</span> <span className=" text-[18px]">{worker.username}</span> </div>
+                                            <div className="flex w-full  p items-center gap-2"><span className="font-bold text-[18px]">Disease:</span> <span className=" text-[18px]">{disease.diseases}</span> </div>
 
-                                            <div className="flex w-full   items-center gap-2"><span className="font-bold text-[18px]">Residence:</span> <span className=" text-[18px]">{worker.residence}</span> </div>
-                                            <div className="flex w-full   items-center gap-2"><span className="font-bold text-[18px]">National Id:</span> <span className=" text-[18px]">{worker.nationalId}</span> </div>
-                                            <div className="flex w-full   items-center gap-2"><span className="font-bold text-[18px]">Keen Name:</span> <span className=" text-[18px]">{worker.keenName}</span> </div>
-                                            <div className="flex w-full   items-center gap-2"><span className="font-bold text-[18px]">Keen Phone:</span> <span className=" text-[18px]">{worker.keenPhone}</span> </div>
-                                            <div className="flex w-full   items-center gap-2"><span className="font-bold text-[18px]">Farm:</span> <span className=" text-[18px]">{worker.farm}</span> </div>
+                                            <div className="flex w-full   items-center gap-2"><span className="font-bold text-[18px]">Causes:</span> <span className=" text-[18px]">{disease.causes}</span> </div>
 
 
                                         </div>
@@ -141,7 +120,7 @@ const Index = () => {
                                             >Change Farm</button>
                                             <button className="w-full  gap-4 items-center bg-green p-2 rounded-md text-white text-center cursor-pointer" onClick={() => {
                                                 handleDelete()
-                                            }}>Delete worker</button>
+                                            }}>Delete disease</button>
 
 
                                         </div>
@@ -154,7 +133,7 @@ const Index = () => {
 
 
 
-                                <Loading data="worker does Not exist or it has been deleted" />
+                                <Loading data="disease does Not exist or it has been deleted" />
 
 
                                 :
@@ -192,16 +171,16 @@ const Index = () => {
 
                 }} />
 
-                <h1 className="text-2xl font-semibold text-center">Change Worker Farm</h1>
+                <h1 className="text-2xl font-semibold text-center">Change disease Farm</h1>
 
-                <form className="flex flex-col gap-2" onSubmit={handleEdit}>
-                    <select name="farm" id="" className="p-4 shadow-lg outline-none cursor-pointer" onChange={(e) => setFarm(e.target.value)} required >
+                <div className="flex flex-col gap-2">
+                    <select name="" id="" className="p-4 shadow-lg outline-none cursor-pointer" onChange={(e) => setFarm(e.target.value)} >
                         <option value="" disabled>Select Farm</option>
                         {farms?.map((farm) => (<option key={farm._id} className="cursor-pointer" value={farm.name}>{farm.name}</option>))}
 
                     </select>
-                    <button className="text-bold p-2 bg-green text-white w-full " type="submit" >{loading1 ? "Loading...." : "Submit"}</button>
-                </form>
+                    <button className="text-bold p-2 bg-green text-white w-full" onClick={''}>{loading1 ? "Loading...." : "Submit"}</button>
+                </div>
 
             </div>
         </motion.div>

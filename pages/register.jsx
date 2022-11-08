@@ -62,7 +62,7 @@ const Register = () => {
                     <input type="Password" placeholder="Enter Password" className="py-4 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2  outline-none" required name="password" />
                 </div>
                 <button className="bg-green py-3 px-4 text-white rounded-md w-[180px] flex justify-center items-center gap-2" type="submit">{loading ? 'Please Wait....' : "Register"}</button>
-                <p>Already have an account? <span className="text-green cursor-pointer" onClick={() => router.push("login")}>Login</span></p>
+                <p>Already have an account? <button className="text-green cursor-pointer" onClick={() => router.push("login")}>Login</button></p>
 
             </div>
 

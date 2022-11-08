@@ -60,7 +60,7 @@ const Login = () => {
                     <input type="Password" placeholder="Enter Password" className="py-4 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2  outline-none" required name="password" />
                 </div>
                 <button type="submit" className="bg-green py-3 px-4 text-white rounded-md w-[180px] flex justify-center items-center gap-2">{loading ? "Please Wait..." : "Login"} </button>
-                <p>Dont have an account? <span className="text-green cursor-pointer" onClick={() => router.push("register")}>Register</span></p>
+                <p>Dont have an account? <button className="text-green cursor-pointer" onClick={() => router.push("register")}>Register</button></p>
             </form>
 
         </div>
