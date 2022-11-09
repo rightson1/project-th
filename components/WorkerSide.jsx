@@ -18,16 +18,16 @@ const Sidebar = ({ desk }) => {
         <ul className="flex flex-col w-full  py-4 h-full overflow-y-au">
 
 
-            <li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100">
-                <button onClick={() => router.push('/worker')}
+            <li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100" onClick={() => router.push('/worker')}>
+                <button
                     className="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100">
                     <AiOutlineHome className="text-xl cursor-pointer" />
                     <button className="ml-3">Home</button>
 
                 </button>
             </li>
-            <li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100">
-                <button onClick={() => router.push('/worker/profile')}
+            <li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100" onClick={() => router.push('/worker/profile')}>
+                <button
                     className="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100">
                     <AiOutlineUser className="text-xl cursor-pointer" />
                     <button className="ml-3">Profile</button>
@@ -35,8 +35,8 @@ const Sidebar = ({ desk }) => {
                 </button>
             </li>
 
-            <li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100">
-                <button onClick={() => router.push('/worker/form')}
+            <li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100" onClick={() => router.push('/worker/form')}>
+                <button
                     className="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100">
                     <GiFarmTractor className="text-xl" />
                     <button className="ml-3">Form</button>
@@ -45,8 +45,8 @@ const Sidebar = ({ desk }) => {
             </li>
 
 
-            <li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100">
-                <button onClick={() => router.push('/worker')}
+            <li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100" onClick={() => router.push('/worker')}>
+                <button
                     className="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100">
                     <IoMdNotificationsOutline className="text-xl" />
                     <button className="ml-3">Notifications</button>
