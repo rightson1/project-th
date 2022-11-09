@@ -79,7 +79,7 @@ const Index = () => {
                 <img src={product.url} alt="" className=" h-[90%] object-contain  rounded-[10px] opacity-80" />
             </div>
             <div className="flex flex-col  px-4 flex-1 gap-4">
-                <div className="flex w-full justify-between pt-4 items-center"><span className=" text-[18px] font-semibold">{product.diseases.length > 20 ? `${product.diseases.slice(0, 15)}...` : product.diseases}</span><span><FcLike className="text-xl" /></span> </div>
+                <div className="flex w-full justify-between pt-4 items-center"><span className="font-bold text-[18px]">{product.diseases}</span><span><FcLike className="text-xl" /></span> </div>
 
                 <div className="flex w-full  gap-4 items-center  "><span className="font-semibold text-[18px]">Cause: </span>
                     <span className="">{product.causes}</span>
@@ -99,53 +99,9 @@ const Index = () => {
         <div className="text-black mt-10 ty:left-[300px] absolute w-full ty:w-nav pb-[100px]">
 
             <div className="flex flex-col px-8 tl:p-4 my-8 gap-5">
+                <h1 className=" py-4 font-bold text-green text-center  underline text-2xl">Search For pesticide,Herbicede and Fungicide </h1>
 
-
-                <form className="flex  gap-2" onSubmit={handleSubmit} >
-                    <input type="text" placeholder="Look for disease couse  or disease..." className="py-4  rounded-md border-[rgba(0,0,0,.7)] w-full  bg-[rgba(0,0,0,.1)] px-2   outline-none" required name="search" />
-                    <button className="p-4 border-[rgba(0,0,0,.5)] border-[1px] rounded-md" type="submit"  >{!loading2 ? <FcSearch className="text-2xl" /> : <AiOutlineLoading3Quarters className="text-2xl " />}</button>
-                </form>
-                <div className="flex  gap-2 w-full justify-between ">
-                    <h1 className="font-bold text-2xl">Diseases</h1>
-                    <h1 className=" text-green text-normal font-semibold  flex gap-3"><span>New To Old</span> <span><MdOutlineExpandMore className="text-2xl" /></span>  </h1>
-                </div>
-                {search ? <div onClick={() => setSearch(false)}><AiOutlineClose className="text-2xl cursor-pointer" /></div> : <div className="flex  justify-center w-full  gap-4 ">
-                    <motion.button
-
-                        animate={{
-                            border: !offer ? '2px solid rgba(255,100,255,1)' : ''
-                        }}
-                        className="flex items-center justify-center  border-black py-2  px-2 text- rounded-lg border-[1px]  h-[30px]" onClick={() => setOffer(false)} >All</motion.button>
-
-
-                </div>}
-                <div className="flex flex-wrap w-full  gap-4 justify-center">
-                    {
-                        search ? (
-                            found.length ?
-                                found.map((product, index) => {
-                                    return <Card product={product} key={index} />
-                                }) :
-                                !loading2 ? <Loading data="No products Found" /> :
-                                    <Loading data="Loading..." />
-
-
-                        ) : (products.length ?
-                            products.map((product, index) => {
-                                return <Card product={product} key={index} />
-                            }) :
-                            !loading ? <Loading data="No products added yet" /> :
-                                <Loading data="Loading..." />
-
-
-                        )
-
-
-
-                    }
-
-
-                </div>
+                <iframe src="https://www.planetnatural.com/" frameborder="0" className="h-screen shadow-lg p-4"></iframe>
 
             </div>
 

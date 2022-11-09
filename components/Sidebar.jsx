@@ -63,14 +63,16 @@ const Sidebar = ({ desk }) => {
                 </button>
             </li>
 
-            <li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100" onClick={() => router.push('/pedi')}>
+            <li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100" onClick={() => router.push('/pedi/plantnatural')}>
                 <button
                     className="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100">
                     <BsFillEnvelopeFill className="text-xl" />
-                    <button className="ml-3">Applications</button>
+                    <button className="ml-3">Plant Natural
+                    </button>
 
                 </button>
             </li>
+
 
 
 
