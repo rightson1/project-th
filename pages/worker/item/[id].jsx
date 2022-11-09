@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Bottom from "../../../components/Bottom";
-import Navbar from "../../../components/Navbar";
+import WorkerNav from "../../../components/WorkerNav";
 import { useAuth } from "../../../context/AuthContext";
 import { useRouter } from "next/router";
 import { toast, ToastContainer } from 'react-toastify'
 import { baseUrl, toastOptions } from "../../../components/data";
 import Loading from "../../../components/Loading";
-import Sidebar from "../../../components/Sidebar";
+import WorkerSide from "../../../components/WorkerSide";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import axios from "axios";
 import { storage } from "../../../firebase";
@@ -28,65 +28,7 @@ const Index = () => {
     const [values, setValues] = useState();
     const { id } = router.query
 
-    const handleChange = (e) => {
-        setValues({ ...values, [e.target.name]: e.target.value })
-    }
 
-    const handleEdit = (e) => {
-        e.preventDefault();
-
-
-        setLoading1(true)
-
-
-        if (!file) {
-            axios.put(`${baseUrl}/tomato?id=${disease._id}`, { values }).then((res) => {
-                setLoading1(false)
-                setOpen(false)
-                setDisease(res.data)
-                toast.success("Disease Sucessfully", toastOptions);
-
-
-
-            }).catch((err) => {
-                setLoading1(false)
-                toast.error("There was an error", toastOptions);
-                console.log(err)
-            })
-        }
-        else {
-
-            let name = `${file.name}-${Math.floor(Math.random() * 1000)}`;
-            const fileRef = ref(storage, `/disease/${name}`);
-            uploadBytes(fileRef, file).then((res) => {
-                getDownloadURL(res.ref).then((url) => {
-
-                    const data = { ...values, url }
-                    axios.put(`${baseUrl}/tomato?id=${disease._id}`, { data }).then((res) => {
-                        setLoading1(false)
-                        setOpen(false)
-                        setDisease(res.data)
-                        toast.success("Disease Sucessfully", toastOptions);
-
-
-
-                    }).catch((err) => {
-                        setLoading1(false)
-                        toast.error("There was an error", toastOptions);
-                        console.log(err)
-                    })
-
-                })
-
-            }).catch((err) => {
-                setLoading(false)
-                console.log(err);
-            });
-        }
-
-
-
-    }
 
     useEffect(() => {
         if (!admin) {
@@ -109,30 +51,12 @@ const Index = () => {
 
 
     }, [id, change])
-    const handleDelete = () => {
-        const corfirm = window.confirm("Are you sure you want to delete this disease?")
-        if (corfirm) {
-            setLoading2(true)
-            axios.delete(`${baseUrl}/tomato?id=${id}`).then((res) => {
-                toast.success("disease Deleted Sucessfull", toastOptions)
-                setLoading2(false)
-
-                setChange(!change)
-            }).catch((err) => {
-                toast.error("Something went wrong", toastOptions)
-                setLoading2(false)
-            })
-
-        }
-
-
-    }
 
 
     return <div className=" h-screen w-screen  relative">
-        <Sidebar desk={true} />
+        <WorkerSide desk={true} />
 
-        <Navbar add={true} />
+        <WorkerNav worker={true} />
         <div className="text-black mt-10 ty:left-[300px] absolute w-full ty:w-nav   pb-[200px]">
 
             <div className="flex flex-col px-8 tl:p-4 ">
@@ -161,12 +85,7 @@ const Index = () => {
                                             <button className="w-full  gap-4 items-center bg-green p-2 rounded-md text-white text-center cursor-pointer"
                                                 onClick={() => setOpen1(true)}
                                             >View Details</button>
-                                            <button className="w-full  gap-4 items-center bg-green p-2 rounded-md text-white text-center cursor-pointer"
-                                                onClick={() => setOpen(true)}
-                                            >Edit Disease</button>
-                                            {loading2 ? (<button className="w-full  gap-4 items-center bg-green p-2 rounded-md text-white text-center cursor-pointer" onClick={() => setLoading2(false)}>Please Wait...</button>) : <button className="w-full  gap-4 items-center bg-green p-2 rounded-md text-white text-center cursor-pointer" onClick={() => {
-                                                handleDelete()
-                                            }}>Delete disease</button>}
+
 
 
                                         </div>
@@ -197,67 +116,7 @@ const Index = () => {
             </div>
 
         </div>
-        <motion.div
-            initial={{ x: '-200%' }}
-            animate={
-                {
-                    x: open ? 0 : '-200%',
-                    transition: {
-                        duration: 0.5
 
-
-                    },
-                }
-            }
-            className="fixed  top-0 left-0  h-full p-4  w-full z-20  flex  justify-center pt-8  bg-[rgba(0,0,0,.9)] items-center  flex-col ">
-            <AiOutlineCloseCircle className="text-4xl text-[#ab4bab] absolute -top-0 left-[50%] translate-x-[-50%] cursor-pointer" onClick={() => {
-                setOpen(false)
-
-            }} />
-            <div className="flex flex-col gap-4 p-4 shadow-lg bg-white  relative  w-full md:w-3/4 h-[80%] overflow-y-auto ">
-
-
-                <h1 className="text-2xl font-semibold text-center">Edit Disease</h1>
-
-                <form className="flex flex-col gap-2 p-4 items-center " onSubmit={handleEdit}>
-
-                    <div className="flex flex-col text-green items-start w-full ">
-                        <label htmlFor="">Disease</label>
-                        <input type="text" placeholder="Enter Disease  Nsme" className="py-4 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2   outline-none" name="diseases" onChange={handleChange} />
-                    </div>
-                    <div className="flex flex-col text-green items-start w-full ">
-                        <label htmlFor="">Causes</label>
-                        <input type="text" placeholder="Enter Cause" className="py-4 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2  outline-none" name="causes" onChange={handleChange} />
-                    </div>
-                    <div className="flex flex-col text-green items-start w-full ">
-                        <label htmlFor="">Symptoms</label>
-                        <textarea type="text" placeholder="Enter Symptoms" className="py-1 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2  outline-none" name="symptoms" onChange={handleChange} />
-                    </div>
-                    <div className="flex flex-col text-green items-start w-full ">
-                        <label htmlFor="">comments</label>
-                        <textarea type="text" placeholder="Enter Comments" className="py-1 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2  outline-none" name="comments" onChange={handleChange} />
-                    </div>
-                    <div className="flex flex-col text-green items-start w-full ">
-                        <label htmlFor="">Management</label>
-                        <textarea type="text" placeholder="Enter Management" className="py-1 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2  outline-none" name="management" onChange={handleChange} />
-                    </div>
-
-
-                    <div className="flex flex-col text-green items-start w-full ">
-                        <label htmlFor="image">Pick Image</label>
-                        <label type="number" placeholder="Enter Quantity" className="py-4 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2  outline-none flex items-center justify-center" name="price" htmlFor="image">
-                            <BiImageAdd className="text-4xl" /> Pick IMage
-                        </label>
-                        <input type="file" id="image" className="hidden " name="image" accept="image/*" onChange={(e) => setFile(e.target.files[0])} />
-
-                    </div>
-
-                    {loading1 ? <button className="bg-green py-3 px-4 text-white rounded-md w-[180px] flex justify-center items-center gap-2"> Loading...</button> : <button type="submit" className="bg-green py-3 px-4 text-white rounded-md w-[180px] flex justify-center items-center gap-2"> SUBMIT</button>}
-
-                </form>
-
-            </div>
-        </motion.div>
         {
             disease && <motion.div
                 initial={{ x: '-200%' }}
@@ -346,7 +205,7 @@ const Index = () => {
             </motion.div>
         }
 
-        <Bottom admin={true} />
+        <Bottom worker={true} />
 
         <ToastContainer />
     </div>;

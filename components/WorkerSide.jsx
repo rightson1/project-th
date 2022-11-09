@@ -18,7 +18,7 @@ const Sidebar = ({ desk }) => {
         <ul className="flex flex-col w-full  py-4 h-full overflow-y-au">
 
 
-            <li className="my-px cursor-pointer border-b border-black-[2px]">
+            <li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100">
                 <button onClick={() => router.push('/worker')}
                     className="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100">
                     <AiOutlineHome className="text-xl cursor-pointer" />
@@ -26,7 +26,7 @@ const Sidebar = ({ desk }) => {
 
                 </button>
             </li>
-            <li className="my-px cursor-pointer border-b border-black-[2px]">
+            <li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100">
                 <button onClick={() => router.push('/worker/profile')}
                     className="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100">
                     <AiOutlineUser className="text-xl cursor-pointer" />
@@ -35,7 +35,7 @@ const Sidebar = ({ desk }) => {
                 </button>
             </li>
 
-            <li className="my-px cursor-pointer border-b border-black-[2px]">
+            <li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100">
                 <button onClick={() => router.push('/worker/form')}
                     className="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100">
                     <GiFarmTractor className="text-xl" />
@@ -45,7 +45,7 @@ const Sidebar = ({ desk }) => {
             </li>
 
 
-            <li className="my-px cursor-pointer border-b border-black-[2px]">
+            <li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100">
                 <button onClick={() => router.push('/worker')}
                     className="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100">
                     <IoMdNotificationsOutline className="text-xl" />
@@ -60,7 +60,7 @@ const Sidebar = ({ desk }) => {
 
 
 
-            <li className="my-px cursor-pointer" onClick={async () => {
+            <li className="my-px cursor-pointer hover:bg-gray-100" onClick={async () => {
                 await logout()
                 router.push('/')
             }}>

@@ -43,5 +43,21 @@ export default async function handler(req, res) {
             console.log(error);
             res.status(400).json(error);
         }
+    } else if (method === "PUT") {
+        try {
+            const tomato = await Tomato.findOneAndUpdate({ _id: req.query.id }, req.body, {
+                new: true,
+            });
+            res.status(200).json(tomato);
+        } catch (error) {
+            res.status(400).json(error);
+        }
+    } else if (method === "DELETE") {
+        try {
+            const tomato = await Tomato.findOneAndDelete({ _id: req.query.id });
+            res.status(200).json(tomato);
+        } catch (error) {
+            res.status(400).json(error);
+        }
     }
 }

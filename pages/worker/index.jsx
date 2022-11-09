@@ -73,8 +73,10 @@ const Index = () => {
             setSearch(false);
         })
     }
+
+
     const Card = ({ product }) => {
-        return <div className=" flex  gap-2 w-full md:w-[45%]  h-[200px] bg-[rgba(23,191,99,.1)]    rounded-lg  md:max-w-[350px]  max-w-[430px] cursor-pointer" >
+        return <div className=" flex  gap-2 w-full md:w-[45%]  h-[200px] bg-[rgba(23,191,99,.1)]    rounded-lg  md:max-w-[350px]  max-w-[430px] cursor-pointer  tlm:min-w-[400px] " >
             <div className=" h-full  overflow-hidden p-4 flex-1  w-full" >
                 <img src={product.url} alt="" className=" h-[90%] object-contain  rounded-[10px] opacity-80" />
             </div>
@@ -85,12 +87,13 @@ const Index = () => {
                     <span className="">{product.causes}</span>
                 </div>
 
-                <button className="p-2 bg-green text-white rounded-md" onClick={() => router.push(`/shop/item/${product._id}`)}> View More</button>
+                <button className="p-2 bg-green text-white rounded-md" onClick={() => router.push(`/worker/item/${product._id}`)}> View More</button>
             </div>
 
 
         </div>
     }
+
 
 
     return <div className=" h-screen w-screen  relative">

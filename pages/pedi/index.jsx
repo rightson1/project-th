@@ -74,7 +74,7 @@ const Index = () => {
         })
     }
     const Card = ({ product }) => {
-        return <div className=" flex  gap-2 w-full md:w-[45%]  h-[200px] bg-[rgba(23,191,99,.1)]    rounded-lg  md:max-w-[350px]  max-w-[430px] cursor-pointer" >
+        return <div className=" flex  gap-2 w-full md:w-[45%]  h-[200px] bg-[rgba(23,191,99,.1)]    rounded-lg  md:max-w-[350px]  max-w-[430px] cursor-pointer  tlm:min-w-[400px] " >
             <div className=" h-full  overflow-hidden p-4 flex-1  w-full" >
                 <img src={product.url} alt="" className=" h-[90%] object-contain  rounded-[10px] opacity-80" />
             </div>
@@ -96,7 +96,7 @@ const Index = () => {
         <Sidebar desk={true} />
 
         <Navbar />
-        <div className="text-black mt-10 ty:left-[300px] absolute w-full ty:w-nav ">
+        <div className="text-black mt-10 ty:left-[300px] absolute w-full ty:w-nav pb-[100px]">
 
             <div className="flex flex-col px-8 tl:p-4 my-8 gap-5">
 
