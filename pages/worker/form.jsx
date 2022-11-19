@@ -42,10 +42,10 @@ const Index = () => {
             getDownloadURL(res.ref).then((url) => {
 
                 const data = { ...values, avatar: url, pic: name }
-                axios.put(`${baseUrl}/worker?id=${worker._id}`, data).then((res) => {
+                axios.put(`${baseUrl}/tomato?id=${worker._id}`, data).then((res) => {
                     setLoading(false)
 
-                    toast.success("Profile Updated Sucessfully", toastOptions);
+                    toast.success("Image sent sucesfully", toastOptions);
 
                     e.target.reset()
 
@@ -83,7 +83,6 @@ const Index = () => {
                 </div>
                 <div className="flex flex-col text-green items-start w-full ">
                     <label htmlFor="">Plant Type</label>
-                    <input onChange={handleChange} type="text" placeholder="Enter Plant Type" className="py-4 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2  outline-none" name="residence" />
                 </div>
 
 
