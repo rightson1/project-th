@@ -20,7 +20,7 @@ const Index = () => {
     const router = useRouter();
     useEffect(() => {
         if (!admin) {
-            router.push('/login')
+            router.push('/')
             return;
         }
     }, [admin])

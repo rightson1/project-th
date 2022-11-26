@@ -11,7 +11,7 @@ import axios from "axios";
 const Index = () => {
     useEffect(() => {
         if (!admin) {
-            router.push('/login')
+            router.push('/')
             return;
         }
     }, [admin])

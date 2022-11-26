@@ -29,7 +29,7 @@ const Index = () => {
     const router = useRouter();
     useEffect(() => {
         if (!admin) {
-            router.push('/login')
+            router.push('/')
             return;
         }
     }, [admin])
@@ -73,6 +73,7 @@ const Index = () => {
             setSearch(false);
         })
     }
+    console.log(products)
     const Card = ({ product }) => {
         return <div className=" flex  gap-2 w-full md:w-[45%]  h-[200px] bg-[rgba(23,191,99,.1)]    rounded-lg  md:max-w-[350px]  max-w-[430px] cursor-pointer  tlm:min-w-[400px] " >
             <div className=" h-full  overflow-hidden p-4 flex-1  w-full" >

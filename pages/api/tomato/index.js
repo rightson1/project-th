@@ -28,16 +28,36 @@ export default async function handler(req, res) {
                 const tomatoes = await Tomato.findOne({ _id: id });
                 res.status(200).json(tomatoes);
             } else {
-                const tomatoes = await Tomato.find({});
-                res.status(200).json(tomatoes);
+                const toma = await Tomato.find();
+
+                function removeDuplicates(arr) {
+                    return arr.filter((item, index) => arr.indexOf(item) === index);
+                }
+                const uniqueIds = [];
+
+                const unique = toma.filter((element) => {
+                    const isDuplicate = uniqueIds.includes(element.diseases);
+
+                    if (!isDuplicate) {
+                        uniqueIds.push(element);
+
+                        return true;
+                    }
+
+                    return false;
+                });
+                console.log(uniqueIds.length);
+
+                res.status(200).json(toma);
             }
         } catch (error) {
             res.status(400).json(error);
         }
-    }
-    if (method === "POST") {
+    } else if (method === "POST") {
         try {
+            console.log(req.body);
             const tomato = await Tomato.create(req.body);
+
             res.status(201).json(tomato);
         } catch (error) {
             console.log(error);
@@ -45,9 +65,11 @@ export default async function handler(req, res) {
         }
     } else if (method === "PUT") {
         try {
-            const tomato = await Tomato.findOneAndUpdate({ _id: req.query.id }, req.body, {
-                new: true,
-            });
+            const tomato = await Tomato.findOneAndUpdate({ _id: req.query.id },
+                req.body, {
+                    new: true,
+                }
+            );
             res.status(200).json(tomato);
         } catch (error) {
             res.status(400).json(error);

@@ -14,11 +14,11 @@ const Navbar = ({ add }) => {
 
     return <div className="flex flex-col p-4 gap-4 md:pr-5">
         <div className="flex justify-between fixed top-0 left-0 ty:left-[300px] p-4 h-[70px] z-20 bg-[rgba(255,255,255,.98)] w-full ty:w-nav ty:pr-5  shadow-md">
-            {!add ? <p className="text-green cursor-pointer" onClick={() => router.push('/')}>HOME</p> : <BsArrowLeft className="text-green text-3xl cursor-pointer" onClick={() => router.back()} />}
+            {!add ? <p className="text-green cursor-pointer" onClick={() => router.push('/pedi')}>HOME</p> : <BsArrowLeft className="text-green text-3xl cursor-pointer" onClick={() => router.back()} />}
             <div className="hidden md:flex gap-4 text-green" >
                 <button className="cursor-pointer" onClick={() => router.push('/pedi/farms')}>FARMS</button>
                 <button className="cursor-pointer" onClick={() => router.push('/pedi/workers')}>WORKERS</button>
-                <button className="cursor-pointer" onClick={() => router.push('/pedi')}>NOTIFICATIONS</button>
+                <button className="cursor-pointer" onClick={() => router.push('/uploads')}>NOTIFICATIONS</button>
             </div>
             <button className=" relative tl:flex tlm:hidden" onClick={() => {
 
@@ -29,7 +29,11 @@ const Navbar = ({ add }) => {
                 </div>
                 <IoMdNotificationsOutline className="text-3xl text-green  " />
             </button>
-            <div className="hidden md:flex gap-4 text-green" >
+            <div className="hidden md:flex gap-4 text-green cursor-pointer" onClick={async () => {
+                await logout()
+                router.push('/')
+
+            }}>
                 LOGOUT
             </div>
 

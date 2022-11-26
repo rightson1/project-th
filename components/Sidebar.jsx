@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { AiOutlineHome, AiOutlineAppstoreAdd, AiOutlineUser } from "react-icons/ai"
+import { AiOutlineHome, AiOutlineAppstoreAdd, AiOutlineUpload } from "react-icons/ai"
 import { useAuth } from "../context/AuthContext"
 import { MdOutlineLocalOffer, MdPeopleOutline, MdReport } from "react-icons/md"
 import { GiFarmTractor } from "react-icons/gi"
@@ -8,11 +8,25 @@ import { IoMdNotificationsOutline } from "react-icons/io"
 import { GrUserWorker } from "react-icons/gr"
 import { BsFillEnvelopeFill } from "react-icons/bs"
 import Image from "next/image";
-
+import { baseUrl } from "./data";
+import axios from "axios";
 const Sidebar = ({ desk }) => {
     const router = useRouter()
     const { user, logout } = useAuth()
+    const [uploads, setUploads] = useState(0)
+    useEffect(() => {
 
+        axios.get(`${baseUrl}/uploads?read=${false}`).then((res) => {
+
+
+            setUploads(res.data.uploads)
+        }).catch((err) => {
+
+
+        })
+
+
+    }, [])
 
     const Side = () => (
         <ul className="flex flex-col w-full  py-4 ">
@@ -45,14 +59,16 @@ const Sidebar = ({ desk }) => {
                 </button>
             </li>
 
-            <li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100" onClick={() => router.push('/pedi/')}>
+            <li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100" onClick={() => router.push('/pedi/disease')}>
                 <button
                     className="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100">
-                    <IoMdNotificationsOutline className="text-xl" />
-                    <button className="ml-3">Notifications</button>
-                    <button className="flex items-center justify-center text-sm text-gray-500 font-semibold bg-gray-200 h-6 px-2 rounded-full ml-auto">10</button>
+                    <AiOutlineAppstoreAdd className="text-xl" />
+                    <button className="ml-3">Add Disease</button>
+
                 </button>
             </li>
+
+
 
             <li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100" onClick={() => router.push('/pedi/workers')}>
                 <button
@@ -63,13 +79,13 @@ const Sidebar = ({ desk }) => {
                 </button>
             </li>
 
-            <li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100" onClick={() => router.push('/pedi/plantnatural')}>
+            <li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100" onClick={() => router.push('/pedi/uploads')}>
                 <button
                     className="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100">
-                    <BsFillEnvelopeFill className="text-xl" />
-                    <button className="ml-3">Plant Natural
+                    <AiOutlineUpload className="text-xl" />
+                    <button className="ml-3">Uploads
                     </button>
-
+                    <button className="flex items-center justify-center text-sm text-gray-500 font-semibold bg-gray-200 h-6 px-2 rounded-full ml-auto">{uploads}</button>
                 </button>
             </li>
 

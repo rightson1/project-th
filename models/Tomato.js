@@ -4,7 +4,7 @@ const str = {
     type: String,
     required: true,
 };
-const TomatoSchema = new Schema({
+const TomaSchema = new Schema({
     diseases: str,
     symptoms: {
         type: String,
@@ -28,4 +28,4 @@ const TomatoSchema = new Schema({
     },
 }, { timestamps: true });
 
-export default models.Tomato || model("Tomato", TomatoSchema);
+export default models.Toma || model("Toma", TomaSchema);
