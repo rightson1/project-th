@@ -18,7 +18,7 @@ const Index = () => {
 
 
     const { user, admin } = useAuth();
-    const [uploads, setUploads] = React.useState([]);
+    const [messages, setMessages] = React.useState([]);
     const [loading, setLoading] = useState(true)
     const [loading1, setLoading1] = useState(false)
     const [change, setChange] = useState(false)
@@ -33,10 +33,10 @@ const Index = () => {
 
     useEffect(() => {
 
-        axios.get(`${baseUrl}/uploads`).then((res) => {
+        axios.get(`${baseUrl}/message?admin=${true}`).then((res) => {
 
             setLoading(false)
-            setUploads(res.data)
+            setMessages(res.data)
         }).catch((err) => {
 
             setLoading(false)
@@ -48,7 +48,7 @@ const Index = () => {
     const handleDelete = () => {
 
         setLoading1(true)
-        axios.delete(`${baseUrl}/uploads?id=${deleteId}`).then((res) => {
+        axios.delete(`${baseUrl}/message?id=${deleteId}`).then((res) => {
             toast.success("Upload Deleted Sucessfull", toastOptions)
             setLoading1(false)
             setCheck(false)
@@ -71,10 +71,10 @@ const Index = () => {
             <div className="flex flex-col  tl:p-4 ">
 
                 <div className="flex flex-col px-8 tl:p-4 w-full items-center ">
-                    <h1 className="text-3xl font-bold  text-green" >Uploads</h1>
+                    <h1 className="text-3xl font-bold  text-green" >Messages</h1>
                     <div className="overflow-x-auto w-full">
                         {
-                            uploads.length ? <div className="my-8 justify-center w-full overflow-auto h-auto pb-8">
+                            messages.length ? <div className="my-8 justify-center w-full overflow-auto h-auto pb-8">
                                 <table className="table w-full ">
                                     <thead>
                                         <tr>
@@ -88,12 +88,12 @@ const Index = () => {
                                             <th>Read</th>
 
 
-                                            <th className="" >  {check ? <button className="text-[16px] font-normal bg-red-800 text-white py-2 px-4" onClick={() => handleDelete()}>Delete</button> : <button className="text-[14px] font-bold">VIEW</button>}</th>
+                                            <th className="" >  {check ? <button className="text-[16px] font-normal bg-red-800 text-white py-2 px-4" onClick={() => handleDelete()}>Delete</button> : <button className="text-[13px]  font-semibold ">VIEW</button>}</th>
 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {uploads.map((order, i) => {
+                                        {messages.map((order, i) => {
 
                                             return <tr key={i} className="my-2 px-8 border-black border-b" >
                                                 <th>
@@ -109,7 +109,7 @@ const Index = () => {
                                                     <div className="flex items-center space-x-3">
                                                         <div className="avatar">
                                                             <div className="mask mask-squircle w-12 h-12">
-                                                                <img src={order.url} alt={order.url} />
+                                                                <img src={order.profile} alt={order.url} />
                                                             </div>
                                                         </div>
 
@@ -117,7 +117,7 @@ const Index = () => {
                                                 </td>
                                                 <td className="">
                                                     <div className="w-full flex justify-start text-xl">
-                                                        <span>{order.disease}</span>
+                                                        <span>{order.sender}</span>
                                                     </div>
                                                 </td>
 
@@ -129,7 +129,7 @@ const Index = () => {
                                                     </div>
                                                 </td>
                                                 <td className="py-4" onClick={() => {
-                                                    router.push(`/pedi/upload/${order._id}`)
+                                                    router.push(`/pedi/message/${order._id}`)
                                                 }}>
                                                     <div className="w-full flex justify-start text-xl cursor-pointer">
                                                         {<buttom className="bg-red-900 p-1 text-white rounded-lg">View</buttom>}
@@ -146,7 +146,7 @@ const Index = () => {
 
 
 
-                                <Loading data="No uploads added yet" />
+                                <Loading data="No messages added yet" />
 
 
                                 :

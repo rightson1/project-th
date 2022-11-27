@@ -44,10 +44,10 @@ const Register = () => {
 
     return <div className="overflow-x-hidden  flex flex-col" >
         <div className="item  w-full flex justify-center py-4">
-            <img src="kindu.png" alt="" className="max-w-[200px] md:max-w-[300px]" />
+            {/* <img src="kindu.png" alt="" className="max-w-[200px] md:max-w-[300px]" /> */}
         </div>
         <form className="flex flex-col" onSubmit={handleSubmit}>
-            <h1 className="text-green text-center">Admin REGISTERATION FORM</h1>
+            <h1 className="text-green text-center">ADMIN REGISTERATION FORM</h1>
             <div className="flex flex-col  w-full justify-center items-center mt-7 px-8 gap-8">
                 <div className="flex flex-col text-green items-start w-1/2 tx:w-full tl:w-3/4">
                     <label htmlFor="">Name</label>
@@ -62,7 +62,7 @@ const Register = () => {
                     <input type="Password" placeholder="Enter Password" className="py-4 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2  outline-none" required name="password" />
                 </div>
                 <button className="bg-green py-3 px-4 text-white rounded-md w-[180px] flex justify-center items-center gap-2" type="submit">{loading ? 'Please Wait....' : "Register"}</button>
-                <p>Already have an account? <button className="text-green cursor-pointer" onClick={() => router.push("login")}>Login</button></p>
+                <p>Already have an account? <button className="text-green cursor-pointer" onClick={() => router.push("/")}>Login</button></p>
 
             </div>
 

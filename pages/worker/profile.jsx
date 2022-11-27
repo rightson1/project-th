@@ -102,15 +102,15 @@ const Index = () => {
             <form className="flex flex-col gap-4 items-center mt-10 w-full " onSubmit={handleSubmit}>
                 <div className="flex flex-col text-green items-start w-full ">
                     <label htmlFor="">National Id</label>
-                    <input onChange={handleChange} type="number" placeholder="Enter NationalId" className="py-4 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2   outline-none" name="nationalId" />
+                    <input onChange={handleChange} type="number" placeholder="Enter National Id Number" className="py-4 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2   outline-none" name="nationalId" />
                 </div>
                 <div className="flex flex-col text-green items-start w-full ">
-                    <label htmlFor="">Keen Name</label>
-                    <input onChange={handleChange} type="text" placeholder="Enter Keen Name" className="py-4 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2  outline-none" name="keenName" />
+                    <label htmlFor="">Kin Name</label>
+                    <input onChange={handleChange} type="text" placeholder="Enter Kin Name" className="py-4 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2  outline-none" name="keenName" />
                 </div>
                 <div className="flex flex-col text-green items-start w-full ">
-                    <label htmlFor="">Keen Phone</label>
-                    <input onChange={handleChange} type="tel" placeholder="Enter Keen Phone Number" className="py-4 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2  outline-none" name="keenPhone" />
+                    <label htmlFor="">Kin Phone</label>
+                    <input onChange={handleChange} type="tel" placeholder="Enter Kin Phone Number" className="py-4 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2  outline-none" name="keenPhone" />
                 </div>
                 <div className="flex flex-col text-green items-start w-full ">
                     <label htmlFor="">Residence</label>

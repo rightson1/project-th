@@ -90,7 +90,7 @@ const Disease = () => {
         <Sidebar desk={true} />
 
         <Navbar add={true} />
-        <div className="text-black mt-10 ty:left-[300px] absolute w-full ty:w-nav ">
+        <div className="text-black mt-10 ty:left-[300px] absolute w-full ty:w-nav  flex justify-center">
 
             <div className="flex flex-col gap-4 p-4 shadow-lg bg-white  relative  w-full md:w-3/4 h-[80%] overflow-y-auto ">
 
@@ -112,7 +112,7 @@ const Disease = () => {
                         <textarea type="text" placeholder="Enter Symptoms" className="py-1 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2  outline-none" name="symptoms" onChange={handleChange} />
                     </div>
                     <div className="flex flex-col text-green items-start w-full ">
-                        <label htmlFor="">comments</label>
+                        <label htmlFor="">Comments</label>
                         <textarea type="text" placeholder="Enter Comments" className="py-1 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2  outline-none" name="comments" onChange={handleChange} />
                     </div>
                     <div className="flex flex-col text-green items-start w-full ">
@@ -124,7 +124,7 @@ const Disease = () => {
                     <div className="flex flex-col text-green items-start w-full ">
                         <label htmlFor="image">Pick Image</label>
                         <label type="number" placeholder="Enter Quantity" className="py-4 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2  outline-none flex items-center justify-center" name="price" htmlFor="image">
-                            <BiImageAdd className="text-4xl" /> Pick IMage
+                            <BiImageAdd className="text-4xl" /> {file ? file.name : "Pick Image"}
                         </label>
                         <input type="file" id="image" className="hidden " name="image" accept="image/*" onChange={(e) => setFile(e.target.files[0])} />
 

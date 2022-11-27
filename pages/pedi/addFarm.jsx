@@ -90,20 +90,20 @@ const Index = () => {
                     <form className="flex flex-col gap-8 items-center mt-10 w-full " onSubmit={handleSubmit}>
                         <div className="flex flex-col text-green items-start w-full ">
                             <label htmlFor="">Location</label>
-                            <input type="text" placeholder="Enter Product Nsme" className="py-4 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2   outline-none" required name="location" />
+                            <input type="text" placeholder="Enter Location " className="py-4 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2   outline-none" required name="location" />
                         </div>
                         <div className="flex flex-col text-green items-start w-full ">
                             <label htmlFor="">Size</label>
-                            <input type="text" placeholder="Enter Price" className="py-4 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2  outline-none" required name="size" />
+                            <input type="text" placeholder="Enter Size" className="py-4 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2  outline-none" required name="size" />
                         </div>
                         <div className="flex flex-col text-green items-start w-full ">
                             <label htmlFor="">Crops</label>
-                            <input type="text" placeholder="Enter Quantity(optional)" className="py-4 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2  outline-none" name="crops" />
+                            <input type="text" placeholder="Enter Quantity (optional)" className="py-4 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2  outline-none" name="crops" />
                         </div>
                         <div className="flex flex-col text-green items-start w-full ">
                             <label htmlFor="image">Product Image</label>
                             <label type="number" placeholder="Enter Quantity" className="py-4 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2  outline-none flex items-center justify-center" name="price" htmlFor="image">
-                                <BiImageAdd className="text-4xl" /> Pick IMage
+                                <BiImageAdd className="text-4xl" /> {file ? file.name : "Pick Image"}
                             </label>
                             <input type="file" id="image" className="hidden " name="image" accept="image/*" onChange={(e) => setFile(e.target.files[0])} />
 

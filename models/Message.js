@@ -6,8 +6,12 @@ const str = {
 };
 const MessageSchema = new Schema({
     text: str,
-    name: str,
+    sender: str,
     url: {
+        type: String,
+        default: "",
+    },
+    profile: {
         type: String,
         default: "",
     },
@@ -15,7 +19,15 @@ const MessageSchema = new Schema({
         type: Boolean,
         default: false,
     },
-    workerId: str,
+    senderId: str,
+    receiverId: {
+        type: String,
+        default: "",
+    },
+    admin: {
+        type: Boolean,
+        default: true,
+    },
 }, { timestamps: true });
 
 export default models.Message || model("Message", MessageSchema);

@@ -87,7 +87,7 @@ const Index = () => {
                                             <th>Location</th>
 
 
-                                            <th >  <button className="text-[16px] font-normal">View</button></th>
+                                            <th >  <button className="text-[12px] font-bold">VIEW</button></th>
 
                                         </tr>
                                     </thead>

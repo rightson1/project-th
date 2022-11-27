@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { AiOutlineHome, AiOutlineAppstoreAdd, AiOutlineUser } from "react-icons/ai"
+import { AiOutlineHome, AiOutlineAppstoreAdd, AiOutlineUser, AiOutlineMessage } from "react-icons/ai"
 import { useAuth } from "../context/AuthContext"
 import { MdOutlineLocalOffer, MdPeopleOutline, MdReport } from "react-icons/md"
 import { GiFarmTractor } from "react-icons/gi"
@@ -45,12 +45,12 @@ const Sidebar = ({ desk }) => {
             </li>
 
 
-            <li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100" onClick={() => router.push('/worker')}>
+            <li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100" onClick={() => router.push('/worker/message')}>
                 <button
                     className="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100">
-                    <IoMdNotificationsOutline className="text-xl" />
-                    <button className="ml-3">Notifications</button>
-                    <button className="flex items-center justify-center text-sm text-gray-500 font-semibold bg-gray-200 h-6 px-2 rounded-full ml-auto">10</button>
+                    <AiOutlineMessage className="text-xl" />
+                    <button className="ml-3">Message</button>
+                    {/* <button className="flex items-center justify-center text-sm text-gray-500 font-semibold bg-gray-200 h-6 px-2 rounded-full ml-auto">10</button> */}
                 </button>
             </li>
 

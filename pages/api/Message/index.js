@@ -14,6 +14,7 @@ export default async function handler(req, res) {
     } else if (req.method === "GET") {
         const { id } = req.query;
         const { read } = req.query;
+        const { admin } = req.query;
         if (read) {
             try {
                 const message = await Message.find({ read: false });
@@ -21,9 +22,23 @@ export default async function handler(req, res) {
             } catch (error) {
                 res.status(500).json({ error: error.message });
             }
+        } else if (admin && read) {
+            try {
+                const message = await Message.find({ read: false, admin: true });
+                res.status(200).json({ messages: message.length });
+            } catch (error) {
+                res.status(500).json({ error: error.message });
+            }
         } else if (id) {
             const message = await Message.findById(id);
             res.status(200).json(message);
+        } else if (admin) {
+            try {
+                const message = await Message.find({ admin: true });
+                res.status(200).json(message);
+            } catch (error) {
+                res.status(500).json({ error: error.message });
+            }
         } else {
             try {
                 const messages = await Message.find({}).sort({ read: false });

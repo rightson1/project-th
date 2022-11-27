@@ -138,7 +138,7 @@ const Index = () => {
             <div className="flex flex-col px-8 tl:p-4 ">
 
                 <div className="flex flex-col px-8 tl:p-4 w-full items-center ">
-                    <h1 className="text-3xl font-bold  text-green" >diseases</h1>
+                    <h1 className="text-3xl font-bold  text-green" >Diseases</h1>
                     <div className="overflow-x-auto w-full md:px-8 shadow-lg p-2 rounded-lg">
                         {
                             disease ? <div className="my-8 justify-center w-full overflow-auto h-auto pb-8">

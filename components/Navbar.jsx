@@ -18,7 +18,6 @@ const Navbar = ({ add }) => {
             <div className="hidden md:flex gap-4 text-green" >
                 <button className="cursor-pointer" onClick={() => router.push('/pedi/farms')}>FARMS</button>
                 <button className="cursor-pointer" onClick={() => router.push('/pedi/workers')}>WORKERS</button>
-                <button className="cursor-pointer" onClick={() => router.push('/uploads')}>NOTIFICATIONS</button>
             </div>
             <button className=" relative tl:flex tlm:hidden" onClick={() => {
 

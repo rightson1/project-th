@@ -81,7 +81,7 @@ const Index = () => {
                 <img src={product.url} alt="" className=" h-[90%] object-contain  rounded-[10px] opacity-80" />
             </div>
             <div className="flex flex-col  px-4 flex-1 gap-4">
-                <div className="flex w-full justify-between pt-4 items-center"><span className="font-bold text-[18px]">{product.diseases}</span><span><FcLike className="text-xl" /></span> </div>
+                <div className="flex w-full justify-between pt-4 items-center"><span className="font-bold text-[18px]">{product.diseases.slice(0, 15)}</span><span><FcLike className="text-xl" /></span> </div>
 
                 <div className="flex w-full  gap-4 items-center  "><span className="font-semibold text-[18px]">Cause: </span>
                     <span className="">{product.causes}</span>
@@ -106,7 +106,7 @@ const Index = () => {
 
 
                 <form className="flex  gap-2" onSubmit={handleSubmit} >
-                    <input type="text" placeholder="Look for disease couse  or disease..." className="py-4  rounded-md border-[rgba(0,0,0,.7)] w-full  bg-[rgba(0,0,0,.1)] px-2   outline-none" required name="search" />
+                    <input type="text" placeholder="Look for disease cause  or disease..." className="py-4  rounded-md border-[rgba(0,0,0,.7)] w-full  bg-[rgba(0,0,0,.1)] px-2   outline-none" required name="search" />
                     <button className="p-4 border-[rgba(0,0,0,.5)] border-[1px] rounded-md" type="submit"  >{!loading2 ? <FcSearch className="text-2xl" /> : <AiOutlineLoading3Quarters className="text-2xl " />}</button>
                 </form>
                 <div className="flex  gap-2 w-full justify-between ">

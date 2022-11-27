@@ -102,7 +102,7 @@ const Index = () => {
             >
 
                 <div className="flex flex-col text-green items-start w-full">
-                    <label htmlFor="image">Product Image</label>
+                    <label htmlFor="image">Upload Image</label>
                     <label type="number" placeholder="Enter Quantity" className="py-4 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2  outline-none flex items-center justify-center" required name="file" htmlFor="image">
                         <AiFillCamera className="text-4xl" /> {file ? file.name.toUpperCase() : 'Pick Image or Take Photo'}
                     </label>
