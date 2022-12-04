@@ -12,10 +12,12 @@ import { MdOutlineExpandMore } from "react-icons/md";
 import Loading from "../../components/Loading";
 import { format } from "timeago.js"
 import axios from "axios"
+import Header from "../../components/Header";
+import { toast, ToastContainer } from "react-toastify";
 
 
 const Index = () => {
-    const { admin } = useAuth();
+    const { admin, worker } = useAuth();
     const [products, setProducts] = React.useState([]);
     const [offer, setOffer] = React.useState(false);
     const [offers, setOffers] = React.useState([]);
@@ -25,8 +27,18 @@ const Index = () => {
     const [search, setSearch] = React.useState(false);
     const [all, setAll] = React.useState(false);
     const [found, setFound] = React.useState([]);
+    const [notification, setNotification] = React.useState();
 
     const router = useRouter();
+    const toastOptions = {
+        position: "top-right",
+        autoClose: 10000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+        pauseOnHover: false,
+    };
     useEffect(() => {
         if (!admin) {
             router.push('/')
@@ -46,6 +58,27 @@ const Index = () => {
 
 
     }, [])
+    useEffect(() => {
+        if (worker) {
+
+            axios.get(`${baseUrl}/message?receiver=${worker._id}`).then((res) => {
+                res.data.map((item) => {
+                    toast.success(item.text, toastOptions)
+                    axios.delete(`${baseUrl}/message?id=${item._id}`).then((res) => {
+                        console.log(res)
+                    }).catch((err) => {
+                        console.log(err)
+                    }
+                    )
+                })
+
+            }).catch((err) => {
+                console.log(err)
+
+            })
+
+        }
+    }, [worker])
     useEffect(() => {
         axios.get(`${baseUrl}/tomato`).then((res) => {
             setLoading1(false);
@@ -76,7 +109,19 @@ const Index = () => {
 
 
     const Card = ({ product }) => {
-        return <div className=" flex  gap-2 w-full md:w-[45%]  h-[200px] bg-[rgba(23,191,99,.1)]    rounded-lg  md:max-w-[350px]  max-w-[430px] cursor-pointer  tlm:min-w-[400px] " >
+        return <motion.div
+            initial={{
+                scaleX: .7,
+
+
+            }}
+            whileInView={{
+                scaleX: 1,
+
+            }}
+
+
+            className=" flex  gap-2 w-full md:w-[45%]  h-[200px] bg-[rgba(23,191,99,.1)]    rounded-lg  md:max-w-[350px]  max-w-[430px] cursor-pointer  tlm:min-w-[400px] " >
             <div className=" h-full  overflow-hidden p-4 flex-1  w-full" >
                 <img src={product.url} alt="" className=" h-[90%] object-contain  rounded-[10px] opacity-80" />
             </div>
@@ -91,14 +136,14 @@ const Index = () => {
             </div>
 
 
-        </div>
+        </motion.div>
     }
 
 
 
     return <div className=" h-screen w-screen  relative">
         <WorkerSide desk={true} />
-
+        <Header title={"Worker"} />
         <WorkerNav />
         <div className="text-black mt-10 ty:left-[300px] absolute w-full ty:w-nav ">
 
@@ -156,7 +201,7 @@ const Index = () => {
         </div>
 
         <Bottom worker={true} />
-
+        <ToastContainer />
 
     </div>;
 };

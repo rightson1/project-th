@@ -28,6 +28,17 @@ export default async function handler(req, res) {
                 res.status(500).json({ error: error.message });
             }
         }
+    } else if (req.method === "PUT") {
+        const { id } = req.query;
+        try {
+            const farm = await Farm.findByIdAndUpdate(id, req.body, {
+                new: true,
+                runValidators: true,
+            });
+            res.status(200).json(farm);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
     } else if (req.method === "DELETE") {
         try {
             const farm = await Farm.findByIdAndDelete(req.query.id);

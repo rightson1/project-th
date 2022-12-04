@@ -14,6 +14,7 @@ import { baseUrl, toastOptions } from "../../components/data";
 import { toast, ToastContainer } from "react-toastify";
 import { AiFillCamera, AiOutlineCloseCircle } from "react-icons/ai";
 import { motion } from 'framer-motion'
+import Header from "../../components/Header";
 const Index = () => {
     const { admin, worker } = useAuth();
     const [file, setFile] = React.useState('');
@@ -37,7 +38,7 @@ const Index = () => {
     const handleUpload = async (e) => {
         setLoading1(true)
         let name = `${file.name}-${Math.floor(Math.random() * 1000)}`;
-        const fileRef = ref(storage, `/worker/${name}`);
+        const fileRef = ref(storage, `/diseases/${name}`);
         let form = new FormData();
         form.append('file', file);
         uploadBytes(fileRef, file).then((res) => {
@@ -92,6 +93,7 @@ const Index = () => {
 
     return <div className=" min-h-full w-screen  relative ">
         <WorkerSide desk={true} />
+        <Header title={"Form"} />
 
         <WorkerNav />
         <div className="text-black mt-10 ty:left-[300px] absolute w-full ty:w-nav pb-[100px] px-4 ">

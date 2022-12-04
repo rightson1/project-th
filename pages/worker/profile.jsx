@@ -12,11 +12,13 @@ import { storage } from "../../firebase";
 import axios from "axios";
 import { baseUrl, toastOptions } from "../../components/data";
 import { toast, ToastContainer } from "react-toastify";
+import Header from "../../components/Header";
 const Index = () => {
     const { admin, worker } = useAuth();
     const [file, setFile] = React.useState(null);
     const [loading, setLoading] = React.useState(false);
     const [values, setValues] = React.useState()
+    const [change, setChange] = React.useState(false)
 
     const handleChange = (e) => {
         setValues({ ...values, [e.target.name]: e.target.value })
@@ -46,6 +48,7 @@ const Index = () => {
                 toast.success("Profile Updated Sucessfully", toastOptions);
 
                 e.target.reset()
+                setChange(!change)
 
             }).catch((err) => {
                 setLoading(false)
@@ -66,6 +69,7 @@ const Index = () => {
                         toast.success("Profile Updated Sucessfully", toastOptions);
 
                         e.target.reset()
+                        setChange(!change)
 
                     }).catch((err) => {
                         setLoading(false)
@@ -84,37 +88,42 @@ const Index = () => {
 
     return <div className=" min-h-full w-screen  relative ">
         <WorkerSide desk={true} />
+        <Header title={"Profile"} />
+
 
         <WorkerNav />
         <div className="text-black mt-10 ty:left-[300px] absolute w-full ty:w-nav pb-[100px] px-4 ">
 
-            <div className="flex  gap-8 shadow-lg p-4 bg-[rgba(23,191,99,.1)] " >
+            <div className="flex  gap-8 shadow-lg p-4 bg-[rgba(23,191,99,.1)] w-full bg-" >
                 <div className="relative ">
                     <Image src={file ? URL.createObjectURL(file) : worker?.avatar ? worker.avatar : "/avatar.png"} alt="" width="100%" objectFit="cover" height="100%" />
                     <label htmlFor="file" className="absolute p-2 shadow-lg bg-[rgba(0,0,0,.3)] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-2xl"><BiEditAlt className="text-white" /></label>
 
                 </div>    <input type="file" id="file" className="hidden" onChange={(e) => setFile(e.target.files[0])} />
                 <div className="flex flex-col">
-                    <h1 className="font-semibold text-xl">Rightson Kirigha</h1>
-                    <h1 className="font-light">Nairobi,Starehe</h1>
+                    <div className="flex flex-wrap gap-4">
+                        <h1 className="font-semibold text-xl">Name : {worker?.username}</h1>
+                        <h1 className="font-semibold text-xl">Farm : {worker?.farm}</h1>
+                    </div>
+
                 </div>
             </div>
             <form className="flex flex-col gap-4 items-center mt-10 w-full " onSubmit={handleSubmit}>
                 <div className="flex flex-col text-green items-start w-full ">
                     <label htmlFor="">National Id</label>
-                    <input onChange={handleChange} type="number" placeholder="Enter National Id Number" className="py-4 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2   outline-none" name="nationalId" />
+                    <input onChange={handleChange} type="number" placeholder={worker?.nationalId ? worker.nationalId : "Enter National Id Number"} className="py-4 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2   outline-none" name="nationalId" />
                 </div>
                 <div className="flex flex-col text-green items-start w-full ">
                     <label htmlFor="">Kin Name</label>
-                    <input onChange={handleChange} type="text" placeholder="Enter Kin Name" className="py-4 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2  outline-none" name="keenName" />
+                    <input onChange={handleChange} type="text" placeholder={worker?.keenName ? worker.keenName : "Enter Kin Name"} className="py-4 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2  outline-none" name="keenName" />
                 </div>
                 <div className="flex flex-col text-green items-start w-full ">
                     <label htmlFor="">Kin Phone</label>
-                    <input onChange={handleChange} type="tel" placeholder="Enter Kin Phone Number" className="py-4 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2  outline-none" name="keenPhone" />
+                    <input onChange={handleChange} type="tel" placeholder={worker?.keenPhone ? worker.keenPhone : "Enter Kin Phone"} className="py-4 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2  outline-none" name="keenPhone" />
                 </div>
                 <div className="flex flex-col text-green items-start w-full ">
                     <label htmlFor="">Residence</label>
-                    <input onChange={handleChange} type="text" placeholder="Enter Your Residence" className="py-4 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2  outline-none" name="residence" />
+                    <input onChange={handleChange} type="text" placeholder={worker?.residence ? worker.residence : "Enter Residence"} className="py-4 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2  outline-none" name="residence" />
                 </div>
 
 

@@ -17,7 +17,7 @@ const Navbar = ({ add }) => {
             {!add ? <p className="text-green cursor-pointer" onClick={() => router.push('/pedi')}>HOME</p> : <BsArrowLeft className="text-green text-3xl cursor-pointer" onClick={() => router.back()} />}
             <div className="hidden md:flex gap-4 text-green" >
                 <button className="cursor-pointer" onClick={() => router.push('/pedi/farms')}>FARMS</button>
-                <button className="cursor-pointer" onClick={() => router.push('/pedi/workers')}>WORKERS</button>
+                <button className="cursor-pointer " onClick={() => router.push('/pedi/workers')}>WORKERS</button>
             </div>
             <button className=" relative tl:flex tlm:hidden" onClick={() => {
 

@@ -13,6 +13,7 @@ import { storage } from "../../../firebase";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { BiImageAdd } from "react-icons/bi";
 import { motion } from 'framer-motion'
+import Header from "../../../components/Header";
 const Index = () => {
     const router = useRouter();
     const { user, admin } = useAuth();
@@ -55,6 +56,7 @@ const Index = () => {
 
     return <div className=" h-screen w-screen  relative">
         <WorkerSide desk={true} />
+        <Header title={"Disease"} />
 
         <WorkerNav worker={true} add={true} />
         <div className="text-black mt-10 ty:left-[300px] absolute w-full ty:w-nav   pb-[200px]">

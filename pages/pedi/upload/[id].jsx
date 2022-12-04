@@ -8,6 +8,7 @@ import { baseUrl, toastOptions } from "../../../components/data";
 import Loading from "../../../components/Loading";
 import Sidebar from "../../../components/Sidebar";
 import axios from "axios";
+import Header from "../../../components/Header";
 const Index = () => {
     const router = useRouter();
 
@@ -30,9 +31,6 @@ const Index = () => {
     const { id } = router.query
 
 
-
-
-
     useEffect(() => {
 
 
@@ -48,6 +46,21 @@ const Index = () => {
 
 
     }, [id, change])
+
+    useEffect(() => {
+        if (!upload) return;
+        if (upload.read) return;
+        axios.put(`${baseUrl}/uploads?id=${id}`).then((res) => {
+
+            setLoading2(false)
+            setChange(!change)
+
+        }).catch((err) => {
+
+            setLoading2(false)
+        })
+    }, [upload])
+
 
 
     useEffect(() => {
@@ -80,23 +93,24 @@ const Index = () => {
 
         setLoading2(true)
         axios.put(`${baseUrl}/uploads?id=${id}`).then((res) => {
-            toast.success("Marked As Read", toastOptions)
+
             setLoading2(false)
             setChange(!change)
 
         }).catch((err) => {
-            toast.error("Something went wrong", toastOptions)
+
             setLoading2(false)
         })
 
 
     }
 
-    console.log(upload)
+
     return <div className=" h-screen w-screen  relative">
         <Sidebar desk={true} />
 
-        <Navbar />
+        <Navbar add={true} />
+        <Header title="Message" />
         <div className="text-black mt-10 ty:left-[300px] absolute w-full ty:w-nav   pb-[200px]">
 
             <div className="flex flex-col  tl:p-4 ">
@@ -111,13 +125,13 @@ const Index = () => {
 
                             <div dangerouslySetInnerHTML={{ __html: result }} className="mt-5"></div>
                             <div className="flex px-8 gap-4 py-5">
-                                {upload.read ? <button className="w-full  gap-4 items-center bg-green p-2 rounded-md text-white text-center cursor-pointer"
+                                {/* {upload.read ? <button className="w-full  gap-4 items-center bg-green p-2 rounded-md text-white text-center cursor-pointer"
 
                                 >Already Read</button> : loading2 ? <button className="w-full  gap-4 items-center bg-green p-2 rounded-md text-white text-center cursor-pointer"
 
                                 >Loading...</button> : <button className="w-full  gap-4 items-center bg-green p-2 rounded-md text-white text-center cursor-pointer"
                                     onClick={() => handleRead()}
-                                >Mark As Read</button>}
+                                >Mark As Read</button>} */}
                                 {loading1 ? <button className="w-full  gap-4 items-center bg-green p-2 rounded-md text-white text-center cursor-pointer"
 
                                 >Loading...</button> : <button className="w-full  gap-4 items-center bg-green p-2 rounded-md text-white text-center cursor-pointer"

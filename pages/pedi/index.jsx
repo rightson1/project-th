@@ -12,6 +12,7 @@ import { MdOutlineExpandMore } from "react-icons/md";
 import { motion } from "framer-motion"
 import axios from "axios"
 import { baseUrl } from "../../components/data";
+import Header from "../../components/Header";
 
 
 const Index = () => {
@@ -73,11 +74,25 @@ const Index = () => {
             setSearch(false);
         })
     }
-    console.log(products)
+
     const Card = ({ product }) => {
-        return <div className=" flex  gap-2 w-full md:w-[45%]  h-[200px] bg-[rgba(23,191,99,.1)]    rounded-lg  md:max-w-[350px]  max-w-[430px] cursor-pointer  tlm:min-w-[400px] " >
+        return <motion.div
+            initial={{
+                scaleX: .7,
+
+
+            }}
+            whileInView={{
+                scaleX: 1,
+
+            }}
+
+
+            className=" flex  shadow-lg gap-2 w-full md:w-[45%]  h-[200px] bg-[rgba(23,191,99,.1)]    rounded-lg  md:max-w-[350px]  max-w-[430px] cursor-pointer  tlm:min-w-[400px] " >
             <div className=" h-full  overflow-hidden p-4 flex-1  w-full" >
-                <img src={product.url} alt="" className=" h-[90%] object-contain  rounded-[10px] opacity-80" />
+                <motion.img
+
+                    src={product.url} alt="" className=" h-[90%] object-contain  rounded-[10px] opacity-80" />
             </div>
             <div className="flex flex-col  px-4 flex-1 gap-4">
                 <div className="flex w-full justify-between pt-4 items-center"><span className=" text-[18px] font-semibold">{product.diseases.length > 20 ? `${product.diseases.slice(0, 15)}...` : product.diseases}</span><span><FcLike className="text-xl" /></span> </div>
@@ -86,16 +101,16 @@ const Index = () => {
                     <span className="">{product.causes}</span>
                 </div>
 
-                <button className="p-2 bg-green text-white rounded-md" onClick={() => router.push(`/pedi/item/${product._id}`)}> View More</button>
+                <button className="p-2 bg-green text-white rounded-md hover:bg-transparent hover:shadow-lg hover:text-black duration-[100] transition-all" onClick={() => router.push(`/pedi/item/${product._id}`)}> View More</button>
             </div>
 
 
-        </div>
+        </motion.div>
     }
 
     return <div className=" h-screen w-screen  relative">
         <Sidebar desk={true} />
-
+        <Header title={"Admin"} />
         <Navbar />
         <div className="text-black mt-10 ty:left-[300px] absolute w-full ty:w-nav pb-[100px]">
 

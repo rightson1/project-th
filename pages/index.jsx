@@ -10,6 +10,7 @@ import { toastOptions } from "../components/data";
 import { baseUrl } from "../components/data";
 import axios from "axios";
 import HomeNav from "../components/HomeNav";
+import Header from "../components/Header";
 const Us = () => {
   const router = useRouter()
   const [loading, setLoading] = React.useState(false)
@@ -62,7 +63,7 @@ const Us = () => {
           router.push("/pedi")
 
         } else {
-          toast.error("You are not an admin dummy", toastOptions)
+          toast.error("You are not an admin", toastOptions)
         }
         setLoading(false)
       }).catch((err) => {
@@ -97,7 +98,7 @@ const Us = () => {
 
 
         } else {
-          toast.error("You are Not a worker dummmy", toastOptions)
+          toast.error("You are Not a worker ", toastOptions)
         }
         setLoading(false)
       }).catch((err) => {
@@ -120,6 +121,7 @@ const Us = () => {
   return <div className="w-screen h-screen overflow-hidden bg-[rgb(150,150,150)] -md md:p-8 ">
     <div className="w-full h-full bg-[rgb(200,200,200)] rounded p-4 overflow-y-auto overflow-x-hidden md:p-8">
       <HomeNav />
+      <Header title="Harambee Agro" desc="Home Page" />
       <div className="flex  flex-col relative py-8">
 
         <div className="flex ">
@@ -128,8 +130,8 @@ const Us = () => {
               <div className="h-full w-[20px] bg-black"></div>
               <div className="flex flex-col">
                 <h1 className="text-xl font-bold"> THE </h1>
-                <h1 className="text-xl font-bold"> STUDIO</h1>
-                <p className="text-[15px] font-thin">Your Tagline</p>
+                <h1 className="text-xl font-bold"> HADDS</h1>
+                <p className="text-[15px] font-thin">The best from the start</p>
 
               </div>
 
@@ -182,7 +184,7 @@ const Us = () => {
               </div>
 
               <button className="bg-black py-3 px-4 text-white rounded-md w-full flex justify-center items-center gap-2 w-3/4" onClick={submit}>{loading ? "Please Wait..." : "Login"} </button>
-              <p>Dont have an account? <button className="text-green cursor-pointer" onClick={() => router.push("/worker/register")}>Register As Worker</button></p>
+              <p>Dont have an account? <button className="text-green cursor-pointer" onClick={() => router.push("/worker/register")}>Register As Worker </button> or <button className="text-green cursor-pointer" onClick={() => router.push("/register")}> Register As Admin</button></p>
 
             </div>
 

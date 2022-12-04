@@ -15,6 +15,8 @@ export default async function handler(req, res) {
         const { id } = req.query;
         const { read } = req.query;
         const { admin } = req.query;
+        const { receiver } = req.query;
+
         if (read) {
             try {
                 const message = await Message.find({ read: false });
@@ -35,6 +37,13 @@ export default async function handler(req, res) {
         } else if (admin) {
             try {
                 const message = await Message.find({ admin: true });
+                res.status(200).json(message);
+            } catch (error) {
+                res.status(500).json({ error: error.message });
+            }
+        } else if (receiver) {
+            try {
+                const message = await Message.find({ receiverId: receiver });
                 res.status(200).json(message);
             } catch (error) {
                 res.status(500).json({ error: error.message });

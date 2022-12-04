@@ -5,6 +5,7 @@ import { auth } from "../../firebase"
 import axios from "axios";
 import { baseUrl, toastOptions } from "../../components/data"
 import { ToastContainer, toast } from "react-toastify";
+import Header from "../../components/Header";
 const Register = () => {
     const router = useRouter()
     const [loading, setLoading] = React.useState(false)
@@ -25,7 +26,7 @@ const Register = () => {
                 const user = userCredential.user;
                 const data = { email, username, password }
                 axios.post(`${baseUrl}/worker`, data).then((res) => {
-                    router.push('/worker/login')
+                    router.push('/')
                     setLoading(false)
                 }).catch((err) => {
                     console.log(err)
@@ -57,6 +58,7 @@ const Register = () => {
 
 
     return <div className="overflow-x-hidden  flex flex-col" >
+        <Header title="Register" />
         <div className="item  w-full flex justify-center py-4">
             <img src="kindu.png" alt="" className="max-w-[200px] md:max-w-[300px]" />
         </div>
@@ -65,7 +67,7 @@ const Register = () => {
             <div className="flex flex-col  w-full justify-center items-center mt-7 px-8 gap-8">
                 <div className="flex flex-col text-green items-start w-1/2 tx:w-full tl:w-3/4">
                     <label htmlFor="">Name</label>
-                    <input type="text" placeholder="Enter name(do not use real name)" className="py-4 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2  outline-none" required name="username" />
+                    <input type="text" placeholder="Enter name" className="py-4 placeholder:text-[10px] border-b border-green w-full  bg-[rgba(23,191,99,.1)] px-2  outline-none" required name="username" />
                 </div>
                 <div className="flex flex-col text-green items-start w-1/2 tx:w-full tl:w-3/4">
                     <label htmlFor="">Email</label>

@@ -10,6 +10,8 @@ import Sidebar from "../../../components/Sidebar";
 import axios from "axios";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { motion } from 'framer-motion'
+import Header from "../../../components/Header";
+
 const Index = () => {
     const router = useRouter();
     const { user, admin } = useAuth();
@@ -50,6 +52,25 @@ const Index = () => {
             setLoading1(false)
             setOpen(false)
             setChange(!change)
+            const data = {
+                senderId: user._id,
+                text: `admin has edited your farm to ${farm} on ${new Date().toDateString()}`,
+                sender: "admin",
+                receiverId: worker._id,
+
+            }
+
+            console.log(data)
+            axios.post(`${baseUrl}/message`, data).then((res) => {
+                setLoading1(false)
+                toast.success("Notification Sent To Worker", toastOptions);
+                e.target.reset()
+
+            }).catch((err) => {
+                setLoading1(false)
+                toast.error("There was an error", toastOptions);
+            })
+
             toast.success("Profile Updated Sucessfully", toastOptions);
 
 
@@ -106,12 +127,13 @@ const Index = () => {
         <Sidebar desk={true} />
 
         <Navbar add={true} />
+        <Header title="Workers" />
         <div className="text-black mt-10 ty:left-[300px] absolute w-full ty:w-nav   pb-[200px]">
 
             <div className="flex flex-col px-8 tl:p-4 ">
 
                 <div className="flex flex-col px-8 tl:p-4 w-full items-center ">
-                    <h1 className="text-3xl font-bold  text-green" >workers</h1>
+                    <h1 className="text-3xl font-bold  text-green" >Workers</h1>
                     <div className="overflow-x-auto w-full md:px-8">
                         {
                             worker ? <div className="my-8 justify-center w-full overflow-auto h-auto pb-8">
@@ -128,8 +150,8 @@ const Index = () => {
 
                                             <div className="flex w-full   items-center gap-2"><span className="font-bold text-[18px]">Residence:</span> <span className=" text-[18px]">{worker.residence}</span> </div>
                                             <div className="flex w-full   items-center gap-2"><span className="font-bold text-[18px]">National Id:</span> <span className=" text-[18px]">{worker.nationalId}</span> </div>
-                                            <div className="flex w-full   items-center gap-2"><span className="font-bold text-[18px]">Keen Name:</span> <span className=" text-[18px]">{worker.keenName}</span> </div>
-                                            <div className="flex w-full   items-center gap-2"><span className="font-bold text-[18px]">Keen Phone:</span> <span className=" text-[18px]">{worker.keenPhone}</span> </div>
+                                            <div className="flex w-full   items-center gap-2"><span className="font-bold text-[18px]">Kin Name:</span> <span className=" text-[18px]">{worker.keenName}</span> </div>
+                                            <div className="flex w-full   items-center gap-2"><span className="font-bold text-[18px]">Kin Phone:</span> <span className=" text-[18px]">{worker.keenPhone}</span> </div>
                                             <div className="flex w-full   items-center gap-2"><span className="font-bold text-[18px]">Farm:</span> <span className=" text-[18px]">{worker.farm}</span> </div>
 
 

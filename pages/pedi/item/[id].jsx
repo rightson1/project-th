@@ -13,6 +13,7 @@ import { storage } from "../../../firebase";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { BiImageAdd } from "react-icons/bi";
 import { motion } from 'framer-motion'
+import Header from "../../../components/Header";
 const Index = () => {
     const router = useRouter();
     const { user, admin } = useAuth();
@@ -133,6 +134,7 @@ const Index = () => {
         <Sidebar desk={true} />
 
         <Navbar add={true} />
+        <Header title={disease ? disease.diseases : "Disease"} />
         <div className="text-black mt-10 ty:left-[300px] absolute w-full ty:w-nav   pb-[200px]">
 
             <div className="flex flex-col px-8 tl:p-4 ">
@@ -145,10 +147,32 @@ const Index = () => {
 
 
                                 <div className=" flex  gap-2 w-full   h-auto flex-col py-4      rounded-lg   md:flex-row">
-                                    <div className="  w-full h-[300px] flex-1" >
-                                        <img src={disease.url} alt="" className=" h-[90%]  w-full object-cover" />
+                                    <div className="  w-full h-[300px] flex-1 overflow-hidden" >
+                                        <motion.img
+                                            initial={{
+                                                x: '-100%',
+                                                opacity: .4
+                                            }}
+                                            animate={{
+                                                x: 0,
+                                                opacity: 1
+                                            }}
+                                            whileHover={{
+                                                scale: 1.2,
+                                            }}
+                                            src={disease.url} alt="" className=" h-[90%]  w-full object-cover cursor-pointer rounded-lg" />
                                     </div>
-                                    <div className="flex flex-col  px-4 flex-2  gap-2 flex-1">
+                                    <motion.div
+
+                                        initial={{
+                                            x: '100%',
+                                            opacity: .4
+                                        }}
+                                        animate={{
+                                            x: 0,
+                                            opacity: 1
+                                        }}
+                                        className="flex flex-col  px-4 flex-2  gap-2 flex-1">
                                         <div className="grid grid-cols-1 gap-2 py-3">
                                             <div className="flex w-full  p items-center gap-2"><span className="font-bold text-[18px]">Disease:</span> <span className=" text-[18px]">{disease.diseases}</span> </div>
 
@@ -158,20 +182,20 @@ const Index = () => {
                                         </div>
 
                                         <div className="flex gap-1  flex-wrap">
-                                            <button className="w-full  gap-4 items-center bg-green p-2 rounded-md text-white text-center cursor-pointer"
+                                            <button className="w-full  gap-4 items-center bg-green p-2 rounded-md text-white text-center cursor-pointer hover:bg-transparent hover:shadow-lg hover:text-black duration-[100] transition-all"
                                                 onClick={() => setOpen1(true)}
                                             >View Details</button>
-                                            <button className="w-full  gap-4 items-center bg-green p-2 rounded-md text-white text-center cursor-pointer"
+                                            <button className="w-full  gap-4 items-center bg-green p-2 rounded-md text-white text-center cursor-pointer hover:bg-transparent hover:shadow-lg hover:text-black duration-[100] transition-all"
                                                 onClick={() => setOpen(true)}
                                             >Edit Disease</button>
-                                            {loading2 ? (<button className="w-full  gap-4 items-center bg-green p-2 rounded-md text-white text-center cursor-pointer" onClick={() => setLoading2(false)}>Please Wait...</button>) : <button className="w-full  gap-4 items-center bg-green p-2 rounded-md text-white text-center cursor-pointer" onClick={() => {
+                                            {loading2 ? (<button className="w-full  gap-4 items-center bg-green p-2 rounded-md text-white text-center cursor-pointer" onClick={() => setLoading2(false)}>Please Wait...</button>) : <button className="w-full  gap-4 items-center bg-green p-2 rounded-md text-white text-center cursor-pointer hover:bg-transparent hover:shadow-lg hover:text-black duration-[100] transition-all" onClick={() => {
                                                 handleDelete()
                                             }}>Delete disease</button>}
 
 
                                         </div>
 
-                                    </div>
+                                    </motion.div>
 
                                 </div>
 

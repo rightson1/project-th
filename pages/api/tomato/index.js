@@ -46,7 +46,6 @@ export default async function handler(req, res) {
 
                     return false;
                 });
-                console.log(uniqueIds.length);
 
                 res.status(200).json(toma);
             }

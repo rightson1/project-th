@@ -22,7 +22,7 @@ const Register = () => {
 
 
             axios.post(`${baseUrl}/pedi`, data).then((res) => {
-                router.push('/login')
+                router.push('/')
                 setLoading(false)
             }).catch((err) => {
                 console.log(err)

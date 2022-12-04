@@ -10,6 +10,7 @@ import { AiOutlineMore, AiOutlineCloseCircle } from "react-icons/ai";
 import Sidebar from "../../../components/Sidebar";
 import axios from "axios";
 import { motion } from "framer-motion"
+import Header from "../../../components/Header";
 const Message = () => {
     const router = useRouter();
 
@@ -67,6 +68,21 @@ const Message = () => {
 
 
     }
+
+
+    useEffect(() => {
+        if (!message) return;
+        if (message.read) return;
+        axios.put(`${baseUrl}/message?id=${id}`).then((res) => {
+            toast.success("Marked As Read", toastOptions)
+            setLoading2(false)
+            setChange(!change)
+
+        }).catch((err) => {
+            toast.error("Something went wrong", toastOptions)
+            setLoading2(false)
+        })
+    }, [message])
     const handleRead = () => {
 
         setLoading2(true)
@@ -87,7 +103,8 @@ const Message = () => {
     return <div className=" h-screen w-screen  relative">
         <Sidebar desk={true} />
 
-        <Navbar />
+        <Navbar add={true} />
+        <Header title="Message" />
         <div className="text-black mt-10 ty:left-[300px] absolute w-full ty:w-nav   pb-[200px]" >
 
             <div className="flex flex-col  tl:p-4 ">
@@ -113,13 +130,13 @@ const Message = () => {
 
                                 }} />
 
-                                {message.read ? <button className="w-full shadow-lg text-black  gap-4 items-cente p-2 rounded-md text-center cursor-pointer bg-white hover:bg-black hover:text-white"
+                                {/* {message.read ? <button className="w-full shadow-lg text-black  gap-4 items-cente p-2 rounded-md text-center cursor-pointer bg-white hover:bg-black hover:text-white"
 
                                 >Already Read</button> : loading2 ? <button className="w-full shadow-lg text-black  gap-4 items-cente p-2 rounded-md text-center cursor-pointer bg-white"
 
                                 >Loading...</button> : <button className="w-full  gap-4 items-center p-2 rounded-md  shadow-lg bg-white text-center cursor-pointer text-black hover:bg-black hover:text-white"
                                     onClick={() => handleRead()}
-                                >Mark As Read</button>}
+                                >Mark As Read</button>} */}
                                 {loading1 ? <button className="w-full  gap-4 items-center p-2 rounded-md  shadow-lg bg-white text-center cursor-pointer text-black"
 
 

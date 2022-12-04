@@ -10,6 +10,8 @@ import Sidebar from "../../components/Sidebar";
 import axios from "axios";
 import { BiImageAdd } from "react-icons/bi";
 import { storage } from "../../firebase";
+import Header from "../../components/Header";
+
 const Index = () => {
     const [loading, setLoading] = useState();
     const { user, admin } = useAuth();
@@ -48,6 +50,7 @@ const Index = () => {
 
     return <div className=" min-h-[150vh] w-screen  relative">
         <Sidebar desk={true} />
+        <Header title={"Registration Codes"} />
 
         <Navbar add={true} />
         <div className="text-black mt-10 ty:left-[300px] absolute w-full ty:w-nav ">

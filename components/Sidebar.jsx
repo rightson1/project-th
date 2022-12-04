@@ -7,6 +7,7 @@ import { GiFarmTractor } from "react-icons/gi"
 import { IoMdNotificationsOutline } from "react-icons/io"
 import { GrUserWorker } from "react-icons/gr"
 import { BsFillEnvelopeFill } from "react-icons/bs"
+import { motion } from "framer-motion"
 import Image from "next/image";
 import { baseUrl } from "./data";
 import axios from "axios";
@@ -15,6 +16,8 @@ const Sidebar = ({ desk }) => {
     const { user, logout } = useAuth()
     const [uploads, setUploads] = useState(0)
     const [messages, setMessages] = useState(0)
+
+    const route = router.route;
     useEffect(() => {
 
         axios.get(`${baseUrl}/uploads?read=${false}`).then((res) => {
@@ -28,6 +31,7 @@ const Sidebar = ({ desk }) => {
 
 
     }, [])
+
     useEffect(() => {
 
         axios.get(`${baseUrl}/message?read=${false}&admin=${true}`).then((res) => {
@@ -47,53 +51,110 @@ const Sidebar = ({ desk }) => {
 
 
 
-            <li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100" onClick={() => router.push('/pedi')}>
+            <motion.li className="my-px cursor-pointer overflow-hidden border-b border-black-[2px] hover:bg-gray-100"
+                animate={{
+                    border: route === "/pedi" && "1px solid rgba(23,191,99)",
+                }}
+
+                onClick={() => {
+                    router.push('/pedi')
+
+                }}
+            >
                 <button
-                    className="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 ">
+                    className="flex flex-row items-center h-12 px-4 rounded-lg ">
                     <AiOutlineHome className="text-xl cursor-pointer" />
                     <button className="ml-3">Home</button>
 
                 </button>
-            </li>
+            </motion.li>
 
-            <li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100" onClick={() => router.push('/pedi/farms')}>
+            <motion.li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100 overflow-hidden "
+                animate={{
+                    border: route === "/pedi/farms" && "1px solid rgba(23,191,99)",
+                }}
+                onClick={() => {
+
+                    router.push('/pedi/farms')
+                }}>
                 <button
-                    className="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100">
+                    className="flex flex-row items-center h-12 px-4 rounded-lg ">
                     <GiFarmTractor className="text-xl" />
                     <button className="ml-3">Farms</button>
 
                 </button>
-            </li>
-            <li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100" onClick={() => router.push('/pedi/addFarm')}>
+            </motion.li>
+            <motion.li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100 overflow-hidden "
+                animate={{
+                    border: route === "/pedi/addFarm" && "1px solid rgba(23,191,99)",
+                    // color: route === "/pedi/addFarm" && "white"
+
+                }}
+
+                onClick={() => {
+
+                    router.push('/pedi/addFarm')
+                }}>
                 <button
-                    className="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100">
+                    className="flex flex-row items-center h-12 px-4 rounded-lg text-g-ray-600 hover:bg-gray-100">
                     <AiOutlineAppstoreAdd className="text-xl" />
                     <button className="ml-3">Add Farm</button>
 
                 </button>
-            </li>
+            </motion.li>
 
-            <li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100" onClick={() => router.push('/pedi/disease')}>
+            <motion.li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100 overflow-hidden "
+                animate={{
+                    border: route === "/pedi/disease" && "1px solid rgba(23,191,99)",
+                    // color: route === "/pedi/disease" && "white"
+
+                }}
+
+                onClick={() => {
+
+                    router.push('/pedi/disease')
+                }}>
                 <button
-                    className="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100">
+                    className="flex flex-row items-center h-12 px-4 rounded-lg text-graky-600 hover:bg-gray-100">
                     <AiOutlineAppstoreAdd className="text-xl" />
                     <button className="ml-3">Add Disease</button>
 
                 </button>
-            </li>
+            </motion.li>
 
 
 
-            <li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100" onClick={() => router.push('/pedi/workers')}>
+            <motion.li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100 overflow-hidden "
+                animate={{
+                    border: route === "/pedi/workers" && "1px solid rgba(23,191,99)",
+                    // color: route === "/pedi/workers" && "white"
+
+                }}
+
+                onClick={() => {
+
+                    router.push('/pedi/workers')
+                }}>
                 <button
-                    className="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100">
+                    className="flex flex-row items-center h-12 px-4 rounded-lg text--gray-600 hover:bg-gray-100">
                     <GrUserWorker className="text-xl" />
                     <button className="ml-3">Workers</button>
 
                 </button>
-            </li>
+            </motion.li>
 
-            <li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100" onClick={() => router.push('/pedi/uploads')}>
+            <motion.li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100  overflow-hidden "
+                animate={{
+                    border: route === "/pedi/uploads" && "1px solid rgba(23,191,99)",
+                    // color: route === "/pedi/uploads" && "white"
+
+                }}
+
+
+                onClick={() => {
+
+                    router.push('/pedi/uploads')
+                }}>
                 <button
                     className="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100">
                     <AiOutlineUpload className="text-xl" />
@@ -101,25 +162,43 @@ const Sidebar = ({ desk }) => {
                     </button>
                     <button className="flex items-center justify-center text-sm text-gray-500 font-semibold bg-gray-200 h-6 px-2 rounded-full ml-auto">{uploads}</button>
                 </button>
-            </li>
-            <li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100" onClick={() => router.push('/pedi/messages')}>
+            </motion.li>
+            <motion.li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100 overflow-hidden "
+                animate={{
+                    border: route === "/pedi/messages" && "1px solid rgba(23,191,99)",
+                    // color: route === "/pedi/messages" && "white"
+
+                }}
+                onClick={() => {
+
+                    router.push('/pedi/messages')
+                }}>
                 <button
-                    className="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100">
+                    className="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hov:bg-gray-100">
                     <AiOutlineMessage className="text-xl" />
                     <button className="ml-3">Messages
                     </button>
                     <button className="flex items-center justify-center text-sm text-gray-500 font-semibold bg-gray-200 h-6 px-2 rounded-full ml-auto">{messages}</button>
                 </button>
-            </li>
-            <li className="my-px cursor-pointer border-b border-black-[2px] hover:bg-gray-100" onClick={() => router.push('/pedi/codes')}>
+            </motion.li>
+            <motion.li className="my-px cursor-pointer border-b border-black-[2px] hov:bg-gray-100 overflow-hidden " onClick={() => {
+
+                router.push('/pedi/codes')
+            }}
+                animate={{
+                    border: route === "/pedi/codes" && "1px solid rgba(23,191,99)",
+                    // color: route === "/pedi/codes" && "white"
+
+                }}
+            >
                 <button
-                    className="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100">
+                    className="flex w-full flex-row items-center h-12 px-4 rounded-lg text-g-ray-600 hover:bg-gray-100 ">
                     <AiOutlineKey className="text-xl" />
                     <button className="ml-3">Registration Key
                     </button>
 
                 </button>
-            </li>
+            </motion.li>
 
 
 
@@ -131,7 +210,7 @@ const Sidebar = ({ desk }) => {
 
             }}>
                 <button
-                    className="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100">
+                    className="flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hove:bg-gray-100">
                     <button className="flex items-center justify-center text-lg text-red-400">
                         <svg fill="none"
                             stroke-linecap="round"

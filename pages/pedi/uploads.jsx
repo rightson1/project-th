@@ -8,6 +8,7 @@ import { baseUrl, toastOptions } from "../../components/data";
 import Loading from "../../components/Loading";
 import Sidebar from "../../components/Sidebar";
 import axios from "axios";
+import Header from "../../components/Header";
 const Index = () => {
     useEffect(() => {
         if (!admin) {
@@ -64,7 +65,7 @@ const Index = () => {
 
     return <div className=" h-screen w-screen  relative">
         <Sidebar desk={true} />
-
+        <Header title="Uploads" />
         <Navbar />
         <div className="text-black mt-10 ty:left-[300px] absolute w-full ty:w-nav   pb-[200px]">
 

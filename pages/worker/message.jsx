@@ -14,6 +14,7 @@ import { baseUrl, toastOptions } from "../../components/data";
 import { toast, ToastContainer } from "react-toastify";
 import { AiFillCamera, AiOutlineCloseCircle } from "react-icons/ai";
 import { motion } from 'framer-motion'
+import Header from "../../components/Header";
 const Message = () => {
     const { admin, worker } = useAuth();
     const [file, setFile] = React.useState('');
@@ -80,6 +81,7 @@ const Message = () => {
 
     return <div className=" min-h-full w-screen  relative ">
         <WorkerSide desk={true} />
+        <Header title={"Messages"} />
 
         <WorkerNav />
         <div className="text-black mt-10 ty:left-[300px] absolute w-full ty:w-nav pb-[100px] px-4 ">
